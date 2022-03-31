@@ -1,6 +1,9 @@
 package com.backend.trpg.repository;
 
-import com.backend.trpg.entities.User;
+
+import com.backend.trpg.entities.SavingThrowsProf;
+import com.sun.istack.NotNull;
+import lombok.NonNull;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +11,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, UUID> {
+public interface SavingThrowsProfRepository extends CrudRepository<SavingThrowsProf, UUID> {
 }

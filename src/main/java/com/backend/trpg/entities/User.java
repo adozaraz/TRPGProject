@@ -10,7 +10,7 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="Users")
+@Entity
 @Table
 public class User {
     public static enum UserRole {
@@ -26,8 +26,6 @@ public class User {
     private String email;
 
     private String password;
-
-    public UUID getId() {return id;}
 
     @Builder.Default
     private UserRole userRole = UserRole.USER;
