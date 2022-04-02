@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class SavingThrowsServiceImpl implements SavingThrowsService {
+public class SavingThrowsProfServiceImpl implements SavingThrowsProfService {
     @Autowired
     private SavingThrowsProfRepository savingThrowsProfRepository;
     @Override

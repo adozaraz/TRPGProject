@@ -6,6 +6,6 @@ import lombok.NonNull;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface SavingThrowsService {
+public interface SavingThrowsProfService {
     Optional<SavingThrowsProf> findById(@NonNull UUID id);
 }
