@@ -10,12 +10,14 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="SkillsProf")
+@Entity
 @Table
 public class Monster {
     @Id
     @GeneratedValue
     private UUID id;
+
+    private String name;
 
     public static enum Size {
         TINY, SMALL, MEDIUM, LARGE, HUGE, GARGANTUAN

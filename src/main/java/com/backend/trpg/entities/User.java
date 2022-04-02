@@ -11,7 +11,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name="trpg_user")
 public class User {
     public static enum UserRole {
         ADMIN, USER
@@ -21,7 +21,7 @@ public class User {
     @GeneratedValue()
     private UUID id;
 
-    private String nickname;
+    private String username;
 
     private String email;
 

@@ -18,15 +18,15 @@ public class Stats {
     private UUID id;
 
     @Builder.Default
-    private int strength = 10;
+    private int strength = 8;
     @Builder.Default
-    private int dexterity = 10;
+    private int dexterity = 8;
     @Builder.Default
-    private int constitution = 10;
+    private int constitution = 8;
     @Builder.Default
-    private int intelligence = 10;
+    private int intelligence = 8;
     @Builder.Default
-    private int wisdom = 10;
+    private int wisdom = 8;
     @Builder.Default
-    private int charisma = 10;
+    private int charisma = 8;
 }
