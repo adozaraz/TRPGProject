@@ -27,4 +27,15 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByEmail(@NonNull String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User save(User user) {
+        return this.userRepository.save(user);
+    }
+
+    @Override
+    public Boolean canRegister(String username, String email) {
+        if (userRepository.findByUsername(username).isPresent()) return false;
+        return userRepository.findByEmail(email).isEmpty();
+    }
 }
