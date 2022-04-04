@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    show-sql: true
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/trpg-database
+    username: adozaraz
+    password: JGMF5N3v-qxsPe_
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+server:
+  port: 8081
+
+app:
+  jwtSecret: 3vepd5PjMqrvL8pdcGzBzLk9a5AWVfMNhTKduNJhK2H4mXGcQ8DX68kjJSmC7RSV8jyfMf6Sz5Rcfq9Y9JzB3nfSqUtAxywyRCUx4j3UBc7hr9qxfBC32Wyuuh3wVsjC
+  jwtExpiration: 86400

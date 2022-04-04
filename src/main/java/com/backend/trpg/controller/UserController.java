@@ -1,6 +1,7 @@
 package com.backend.trpg.controller;
 
 import com.backend.trpg.entities.User;
+import com.backend.trpg.security.jwt.JwtProvider;
 import com.backend.trpg.security.request.LoginForm;
 import com.backend.trpg.security.request.SignUpForm;
 import com.backend.trpg.security.response.JwtResponse;
@@ -13,9 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +30,9 @@ public class UserController {
 
     @Autowired
     AuthenticationManager authenticationManager;
+
+    @Autowired
+    JwtProvider jwtProvider;
 
     private final UserService userService;
     public UserController(UserService userService) {
@@ -80,9 +82,9 @@ public class UserController {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), loginRequest.getPassword())
         );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwtToken = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         this.userService.save(user);
-        return ResponseEntity.ok(new JwtResponse("Bearer", userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(jwtToken, userDetails.getUsername(), userDetails.getAuthorities()));
     }
 }
