@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface StatsService {
     Optional<Stats> findById(@NonNull UUID id);
+    Stats save(Stats stats);
 }

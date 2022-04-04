@@ -3,10 +3,7 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.SavingThrowsProf;
 import com.backend.trpg.service.SavingThrowsProfService;
 import lombok.NonNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -22,5 +19,10 @@ public class SavingThrowsProfController {
     @GetMapping("/find/{id}")
     public Optional<SavingThrowsProf> findById(@PathVariable @NonNull UUID id) {
         return this.savingThrowsProfService.findById(id);
+    }
+
+    @PostMapping("/save")
+    public SavingThrowsProf save(@RequestBody SavingThrowsProf savingThrowsProf) {
+        return this.savingThrowsProfService.save(savingThrowsProf);
     }
 }

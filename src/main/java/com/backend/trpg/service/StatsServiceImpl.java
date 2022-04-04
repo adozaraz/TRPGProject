@@ -17,4 +17,9 @@ public class StatsServiceImpl implements StatsService {
     public Optional<Stats> findById(@NonNull UUID id) {
         return statsRepository.findById(id);
     }
+
+    @Override
+    public Stats save(Stats stats) {
+        return this.statsRepository.save(stats);
+    }
 }

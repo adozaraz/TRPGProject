@@ -17,4 +17,9 @@ public class SkillsProfServiceImpl implements SkillsProfService {
     public Optional<SkillsProf> findById(@NonNull UUID id) {
         return skillsProfRepository.findById(id);
     }
+
+    @Override
+    public SkillsProf save(SkillsProf skillsProf) {
+        return this.skillsProfRepository.save(skillsProf);
+    }
 }

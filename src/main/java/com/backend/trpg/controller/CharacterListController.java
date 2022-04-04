@@ -3,10 +3,7 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.CharacterList;
 import com.backend.trpg.service.CharacterListService;
 import lombok.NonNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -27,5 +24,10 @@ public class CharacterListController {
     @GetMapping("/find/name/{name}")
     public Optional<CharacterList> findByName(@PathVariable @NonNull String name) {
         return characterListService.findByName(name);
+    }
+
+    @PostMapping("/save")
+    public CharacterList save(@RequestBody CharacterList characterList) {
+        return this.characterListService.save(characterList);
     }
 }

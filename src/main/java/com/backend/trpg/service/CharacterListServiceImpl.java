@@ -22,4 +22,11 @@ public class CharacterListServiceImpl implements CharacterListService {
     public Optional<CharacterList> findByName(@NonNull String name) {
         return characterListRepository.findByName(name);
     }
+
+    @Override
+    public CharacterList save(CharacterList characterList) {
+        return characterListRepository.save(characterList);
+    }
+
+
 }

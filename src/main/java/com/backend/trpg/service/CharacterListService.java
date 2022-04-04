@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface CharacterListService {
     Optional<CharacterList> findById(@NonNull UUID id);
     Optional<CharacterList> findByName(@NonNull String name);
+    CharacterList save(CharacterList characterList);
 }

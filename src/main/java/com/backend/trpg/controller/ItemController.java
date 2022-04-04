@@ -3,10 +3,7 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.Item;
 import com.backend.trpg.service.ItemService;
 import lombok.NonNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -28,5 +25,10 @@ public class ItemController {
     @GetMapping("/find/itemName/{itemName}")
     public Optional<Item> findByItemName(@PathVariable @NonNull String itemName) {
         return this.itemService.findByItemName(itemName);
+    }
+
+    @PostMapping("/save")
+    public Item save(@RequestBody Item item) {
+        return this.itemService.save(item);
     }
 }

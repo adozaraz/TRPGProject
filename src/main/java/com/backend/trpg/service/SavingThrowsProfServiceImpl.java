@@ -17,4 +17,9 @@ public class SavingThrowsProfServiceImpl implements SavingThrowsProfService {
     public Optional<SavingThrowsProf> findById(@NonNull UUID id) {
         return savingThrowsProfRepository.findById(id);
     }
+
+    @Override
+    public SavingThrowsProf save(SavingThrowsProf savingThrowsProf) {
+        return this.savingThrowsProfRepository.save(savingThrowsProf);
+    }
 }

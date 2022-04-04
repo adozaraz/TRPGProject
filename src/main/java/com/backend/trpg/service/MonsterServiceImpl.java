@@ -22,4 +22,9 @@ public class MonsterServiceImpl implements MonsterService {
     public Optional<Monster> findByName(@NonNull String name) {
         return monsterRepository.findByName(name);
     }
+
+    @Override
+    public Monster save(Monster monster) {
+        return this.monsterRepository.save(monster);
+    }
 }

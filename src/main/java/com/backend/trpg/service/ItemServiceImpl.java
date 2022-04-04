@@ -22,4 +22,9 @@ public class ItemServiceImpl implements ItemService {
     public Optional<Item> findByItemName(@NonNull String itemName) {
         return itemRepository.findByItemName(itemName);
     }
+
+    @Override
+    public Item save(Item item) {
+        return this.itemRepository.save(item);
+    }
 }

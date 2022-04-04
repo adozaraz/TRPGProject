@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface MonsterService {
     Optional<Monster> findById(@NonNull UUID id);
     Optional<Monster> findByName(@NonNull String name);
+    Monster save(Monster monster);
 }
