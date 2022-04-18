@@ -2,7 +2,6 @@ package com.backend.trpg.service;
 
 import com.backend.trpg.entities.User;
 import lombok.NonNull;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
 import java.util.UUID;

@@ -17,6 +17,11 @@ public class Monster {
     @GeneratedValue
     private UUID id;
 
+    @OneToOne
+    @JoinColumn
+    private User creator;
+
+
     private String name;
 
     public static enum Size {
