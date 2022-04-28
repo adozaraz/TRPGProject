@@ -1,9 +1,9 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.html',
-  styleUrls: ['./home.scss']
+  selector: 'app-home',
+  templateUrl: './app-home.html',
+  styleUrls: ['./app-home.scss']
 })
 
 export class HomeComponent {
