@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {AppHeaderComponent} from "./components/header/app-header";
 import {HomeComponent} from "./components/home/app-home";
 import {ModalLoginComponent} from "./components/loginForm/modal-login";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -14,10 +15,11 @@ import {ModalLoginComponent} from "./components/loginForm/modal-login";
         HomeComponent,
         ModalLoginComponent
     ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
