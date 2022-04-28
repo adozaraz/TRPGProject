@@ -14,15 +14,19 @@
       </ul>
 
       <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Войти</button>
-        <button type="button" class="btn btn-warning">Зарегестрироваться</button>
+        <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Войти</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#registryModal">Зарегестрироваться</button>
       </div>
     </div>
   </div>
 </header>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
     <modal-login></modal-login>
+</div>
+
+<div class="modal fade" id="registryModal" tabindex="-1" aria-labelledby="registryModal" aria-hidden="true">
+    <modal-registry></modal-registry>
 </div>
 
 
