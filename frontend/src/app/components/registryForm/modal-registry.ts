@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 
 @Component({
     selector: 'modal-registry',
@@ -8,14 +8,15 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class ModalRegistryComponent {
     registryForm: FormGroup;
+    passwordVisibility: Boolean = false;
 
     constructor(
         private formBuilder: FormBuilder
 
     ) {
         this.registryForm = this.formBuilder.group({
-            login: "",
-            email: "",
+            login: ["", Validators.required],
+            email: ["", [Validators.email, Validators.required]],
             password: ""
         });
     }
