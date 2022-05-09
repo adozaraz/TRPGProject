@@ -8,11 +8,15 @@ import {HomeComponent} from "./components/home/app-home";
 import {ModalLoginComponent} from "./components/loginForm/modal-login";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ModalRegistryComponent} from "./components/registryForm/modal-registry";
+import {DatabaseComponent} from "./components/database/app-database";
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         AppHeaderComponent,
+        DatabaseComponent,
         HomeComponent,
         ModalLoginComponent,
         ModalRegistryComponent
@@ -20,7 +24,8 @@ import {ModalRegistryComponent} from "./components/registryForm/modal-registry";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
   providers: [],
   bootstrap: [AppComponent]
