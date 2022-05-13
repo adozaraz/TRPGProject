@@ -1,0 +1,26 @@
+$red: #ab453e;
+
+.bg-cover {
+    display: flex;
+    background-image: url("~src/assets/dungeons-dragons-monster-magician-wolves-artwork-d-d-others.jpeg");
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    opacity: 100%;
+}
+
+.inner {
+    margin: 5px;
+    font-family: Neucha, serif;
+    font-size: 100px;
+    width: 100%;
+    height: fit-content;
+}
+
+.inner-custom {
+    margin: 5px;
+    font-family: Neucha, serif;
+    font-size: 25px;
+}

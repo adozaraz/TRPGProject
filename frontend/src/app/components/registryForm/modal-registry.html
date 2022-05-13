@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate [formGroup]="registryForm">
                 <div>
                     <label for="login" class="col-form-label">Логин</label>
                     <input type="text" class="form-control" id="login" formControlName="login" required>
@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Зарегестрироваться</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Зарегестрироваться</button>
         </div>
     </div>
 </div>

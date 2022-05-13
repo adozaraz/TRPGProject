@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("api/users")
 public class UserController {
+
+    private static Logger log = Logger.getLogger(UserController.class.getName());
     @Autowired
     PasswordEncoder encoder;
 
@@ -84,7 +87,6 @@ public class UserController {
         );
         String jwtToken = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        this.userService.save(user);
         return ResponseEntity.ok(new JwtResponse(jwtToken, userDetails.getUsername(), userDetails.getAuthorities()));
     }
 }

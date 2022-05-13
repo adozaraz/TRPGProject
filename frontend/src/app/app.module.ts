@@ -10,6 +10,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ModalRegistryComponent} from "./components/registryForm/modal-registry";
 import {DatabaseComponent} from "./components/database/app-database";
 import { RouterModule } from '@angular/router';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./security/authInterceptor";
 
 
 @NgModule({
@@ -25,9 +27,12 @@ import { RouterModule } from '@angular/router';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
