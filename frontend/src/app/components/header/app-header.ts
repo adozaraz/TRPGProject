@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {TokenStorageService} from "../../security/token-storage.service";
 
@@ -7,8 +7,13 @@ import {TokenStorageService} from "../../security/token-storage.service";
   templateUrl: './app-header.html',
   styleUrls: ['./app-header.scss']
 })
-
-export class AppHeaderComponent {
+export class AppHeaderComponent implements OnInit {
     constructor(public userService: UserService, public token: TokenStorageService) {
+    }
+
+    ngOnInit(): void {
+        if (this.token.checkLoginStatus()) {
+            this.userService.loadCurrentUserData(this.token.getUsername());
+        }
     }
 }
