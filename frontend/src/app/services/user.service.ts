@@ -57,7 +57,8 @@ export class UserService {
     }
 
     signOut() {
-
+        // @ts-ignore
+        this.currentUser = null;
     }
 }
 

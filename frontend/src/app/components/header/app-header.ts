@@ -16,4 +16,9 @@ export class AppHeaderComponent implements OnInit {
             this.userService.loadCurrentUserData(this.token.getUsername());
         }
     }
+
+    signOut(): void {
+        this.token.signOut();
+        this.userService.signOut();
+    }
 }
