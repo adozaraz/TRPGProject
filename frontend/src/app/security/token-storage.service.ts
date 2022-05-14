@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 const TOKEN_KEY = "AuthToken";
 const USERNAME_KEY = "AuthUsername";
 const AUTHORITIES_KEY = "AuthAuthorities";
+const EXP_DATE_KEY = "ExpDate"
 
 @Injectable({
     providedIn: "root"
@@ -53,6 +54,27 @@ export class TokenStorageService {
         }
 
         return this.userRoles;
+    }
+
+    public getExpirationDate() {
+        return sessionStorage.getItem(EXP_DATE_KEY);
+    }
+
+    public saveExpirationDate(expDate: string) {
+        window.sessionStorage.removeItem(EXP_DATE_KEY);
+        window.sessionStorage.setItem(EXP_DATE_KEY, expDate);
+    }
+
+    public checkLoginStatus() {
+        if (window.sessionStorage.getItem(TOKEN_KEY) != null) {
+            // @ts-ignore
+            let tokenExpDate = new Date(window.sessionStorage.getItem(EXP_DATE_KEY));
+            if (tokenExpDate.valueOf() > new Date().valueOf()) {
+                this.logged = true;
+                return true;
+            }
+        }
+        return false;
     }
 
 }

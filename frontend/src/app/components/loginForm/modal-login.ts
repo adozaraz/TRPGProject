@@ -29,6 +29,7 @@ export class ModalLoginComponent {
             this.tokenStorage.saveToken(data.token);
             this.tokenStorage.saveUsername(data.username);
             this.tokenStorage.saveAuthorities(data.authorities);
+            this.tokenStorage.saveExpirationDate(data.expirationDate)
             this.userService.loadCurrentUserData(loginInfo.username);
         });
         this.loginForm.reset();

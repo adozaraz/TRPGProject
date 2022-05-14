@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {SignUpInfo} from "../../security/signup-info";
+import {AuthLoginInfo} from "../../security/login-info";
+import {TokenStorageService} from "../../security/token-storage.service";
 
 @Component({
     selector: 'modal-registry',
@@ -14,7 +16,8 @@ export class ModalRegistryComponent {
 
     constructor(
         private formBuilder: FormBuilder,
-        public userService: UserService
+        private userService: UserService,
+        private tokenStorage: TokenStorageService
 
     ) {
         this.registryForm = this.formBuilder.group({
@@ -25,9 +28,14 @@ export class ModalRegistryComponent {
     }
 
     onSubmit(): void {
-        console.log(this.registryForm);
-        this.userService.signUp(new SignUpInfo(this.registryForm.get("login")?.value, this.registryForm.get("email")?.value, this.registryForm.get("password")?.value)).subscribe((data) => {
-            console.log(data)
+        this.userService.signUp(new SignUpInfo(this.registryForm.get("login")?.value, this.registryForm.get("email")?.value, this.registryForm.get("password")?.value)).subscribe(() => {
+            this.userService.attemptAuth(new AuthLoginInfo(this.registryForm.get("email"), this.registryForm.get("login"), this.registryForm.get("password"))).subscribe((data) => {
+                this.tokenStorage.saveToken(data.token);
+                this.tokenStorage.saveUsername(data.username);
+                this.tokenStorage.saveAuthorities(data.authorities);
+                this.tokenStorage.saveExpirationDate(data.expirationDate)
+                this.userService.loadCurrentUserData(data.username);
+            });
         });
         this.registryForm.reset();
     }

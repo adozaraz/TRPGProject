@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import {UserService} from "../../services/user.service";
+import {TokenStorageService} from "../../security/token-storage.service";
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,6 @@ import {UserService} from "../../services/user.service";
 })
 
 export class AppHeaderComponent {
-    constructor(public userService: UserService) {
+    constructor(public userService: UserService, public token: TokenStorageService) {
     }
 }

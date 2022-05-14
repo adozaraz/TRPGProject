@@ -55,5 +55,9 @@ export class UserService {
     saveUser(user: User) {
         return this.http.post(`/api/users/save`, user);
     }
+
+    signOut() {
+
+    }
 }
 

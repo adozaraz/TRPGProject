@@ -12,6 +12,8 @@ import {DatabaseComponent} from "./components/database/app-database";
 import { RouterModule } from '@angular/router';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./security/authInterceptor";
+import {AuthGuardService} from "./security/auth-guard.service";
+import {ModalSettingsComponent} from "./components/settings/modal-settings";
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {AuthInterceptor} from "./security/authInterceptor";
         DatabaseComponent,
         HomeComponent,
         ModalLoginComponent,
-        ModalRegistryComponent
+        ModalRegistryComponent,
+        ModalSettingsComponent
     ],
     imports: [
         BrowserModule,
@@ -31,7 +34,8 @@ import {AuthInterceptor} from "./security/authInterceptor";
         HttpClientModule
     ],
   providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+      AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
