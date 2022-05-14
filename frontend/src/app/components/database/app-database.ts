@@ -4,7 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 export enum QueryItem {
     Spells,
     MagicItems,
-    Bestiary
+    Bestiary,
+    CharacterList
 }
 
 @Component({
@@ -33,6 +34,9 @@ export class DatabaseComponent implements OnInit {
                     break;
                 case QueryItem.Bestiary:
                     this.infoString = "Бестиарий";
+                    break;
+                case QueryItem.CharacterList:
+                    this.infoString = "Листы персонажей";
                     break;
                 default:
                     this.infoString = "Пасхалка";

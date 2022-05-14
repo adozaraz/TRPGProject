@@ -9,9 +9,9 @@
                 Справочник
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="databaseMenuButton">
-                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 1 }">Заклинания</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 2 }">Магические предметы</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 3 }">Бестиарий</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 0 }">Заклинания</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 1 }">Магические предметы</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 2 }">Бестиарий</a></li>
             </ul>
         </li>
       </ul>
@@ -25,9 +25,10 @@
               <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Листы персонажей</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 3 }">Листы персонажей</a></li>
+              <li *ngIf="checkAdminRole()"><a class="dropdown-item">Панель админа</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Настройки</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/settings']">Настройки</a></li>
               <li><a class="dropdown-item" (click)="signOut()">Выйти</a></li>
           </ul>
       </div>

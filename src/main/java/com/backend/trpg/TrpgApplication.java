@@ -20,21 +20,17 @@ public class TrpgApplication {
     @Bean
     CommandLineRunner runner(ItemService itemService, UserService userService, PasswordEncoder passwordEncoder, MonsterService monsterService, SkillsProfService skillsProfService, StatsService statsService) {
         return args -> {
-            User user = userService.save(
-                  new User(
-                          UUID.randomUUID(),
-                          "admin",
-                          "admin@yandex.ru",
-                          passwordEncoder.encode("123456789"),
-                          User.UserRole.ADMIN
-                  )
+            if (userService.canRegister("admin", "admin@yandex.ru")) {
+                userService.save(
+                        new User(
+                                UUID.randomUUID(),
+                                "admin",
+                                "admin@yandex.ru",
+                                passwordEncoder.encode("123456789"),
+                                User.UserRole.ADMIN
+                        )
                 );
-            Stats stats = statsService.save(new Stats(UUID.randomUUID(), 8, 8,8,8,8,8));
-            SkillsProf skillsProf = skillsProfService.save(new SkillsProf(UUID.randomUUID(), false, false, false,false ,false, false));
-            monsterService.save(new Monster(UUID.randomUUID(), user, "Jker", Monster.Size.LARGE, "Humanoid",
-                    Monster.Alignment.CHAOTIC_EVIL, 15, 20, 30, stats,
-                    skillsProf, 12, 12, "Test obj", true));
-            itemService.save(new Item(UUID.randomUUID(), user, "TestObj", true, Item.Rarity.RARE, "TestOb", true));
+            }
         };
     }
 }
