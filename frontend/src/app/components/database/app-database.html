@@ -2,6 +2,7 @@
     <div class="inner d-flex justify-content-center">
         <span>{{this.infoString}}</span>
     </div>
+    <button *ngIf="queryItem == 3" class="btn btn-primary" [routerLink]="['/characterCreation']">Создать персонажа</button>
     <ul class="d-flex list-group mt-2 ms-2 me-2 list-inline mx-auto inner-custom align-content-center">
         <li class="list-group-item">Item 1</li>
         <li class="list-group-item">Item 2</li>

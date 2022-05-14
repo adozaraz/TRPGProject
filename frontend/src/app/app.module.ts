@@ -14,6 +14,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./security/authInterceptor";
 import {AuthGuardService} from "./security/auth-guard.service";
 import {ModalSettingsComponent} from "./components/settings/modal-settings";
+import {ModalCharacterComponent} from "./components/characterListEditor/modal-character";
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {ModalSettingsComponent} from "./components/settings/modal-settings";
         HomeComponent,
         ModalLoginComponent,
         ModalRegistryComponent,
-        ModalSettingsComponent
+        ModalSettingsComponent,
+        ModalCharacterComponent
     ],
     imports: [
         BrowserModule,
