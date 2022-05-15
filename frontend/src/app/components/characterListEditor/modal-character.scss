@@ -1,0 +1,23 @@
+.inputBox {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    margin-left: 40px;
+    font-family: Neucha, serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.borderSet {
+    background:#aaa;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    text-align:center;
+    position: relative;
+    padding-top: 10px;
+    display: block;
+    margin-left: 50px;
+    margin-top: 50px;
+    z-index: 2;
+}

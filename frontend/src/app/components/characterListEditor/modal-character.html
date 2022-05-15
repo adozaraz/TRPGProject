@@ -1,3 +1,40 @@
-<div>
-    На доработке
+<div class="d-flex flex-column justify-content-center">
+    <form role="form" class="row" [formGroup]="stats">
+        <div class="form-group">
+            <label for="Strength" class="col-form-label" style="margin-left: 56px">Сила</label>
+            <input type="text" class="form-control inputBox" id="Strength" formControlName="strength" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("strength")?.value)}}</div>
+        </div>
+        <div class="form-group">
+            <label for="Dexterity" class="col-form-label" style="margin-left: 40px">Ловкость</label>
+            <input type="text" class="form-control inputBox" id="Dexterity" formControlName="dexterity" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("dexterity")?.value)}}</div>
+        </div>
+        <div class="form-group">
+            <label for="Constitution" class="col-form-label" style="margin-left: 18px">Телосложение</label>
+            <input type="text" class="form-control inputBox" id="Constitution" formControlName="constitution" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("constitution")?.value)}}</div>
+        </div>
+        <div class="form-group">
+            <label for="Intelligence" class="col-form-label" style="margin-left: 37px">Интеллект</label>
+            <input type="text" class="form-control inputBox" id="Intelligence" formControlName="intelligence" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("intelligence")?.value)}}</div>
+        </div>
+        <div class="form-group">
+            <label for="Wisdom" class="col-form-label" style="margin-left: 40px">Мудрость</label>
+            <input type="text" class="form-control inputBox" id="Wisdom" formControlName="wisdom" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("wisdom")?.value)}}</div>
+        </div>
+        <div class="form-group">
+            <label for="Charisma" class="col-form-label" style="margin-left: 44px">Харизма</label>
+            <input type="text" class="form-control inputBox" id="Charisma" formControlName="charisma" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div class="borderSet">{{calculateModificator(this.stats.get("charisma")?.value)}}</div>
+        </div>
+    </form>
+    <form role="form" class="row">
+        <div class="form-group" style="margin-left: 10px">
+            <input class="form-check-input" type="checkbox" id="strengthSave">
+            <label for="strengthSave" class="col-form-label">Сила</label>
+        </div>>
+    </form>
 </div>
