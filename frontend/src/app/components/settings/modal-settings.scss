@@ -1,0 +1,16 @@
+.inner {
+    display: flex;
+    background-image: url("~src/assets/dnd-essentials-kit-vg247-2.jpg");
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    opacity: 100%;
+}
+
+.form-control {
+    height: fit-content;
+    width: fit-content;
+    margin: 20px;
+}

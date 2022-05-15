@@ -15,6 +15,7 @@ import {AuthInterceptor} from "./security/authInterceptor";
 import {AuthGuardService} from "./security/auth-guard.service";
 import {ModalSettingsComponent} from "./components/settings/modal-settings";
 import {ModalCharacterComponent} from "./components/characterListEditor/modal-character";
+import {ModalAdminPanelComponent} from "./components/adminPanel/modal-admin";
 
 
 
@@ -27,7 +28,8 @@ import {ModalCharacterComponent} from "./components/characterListEditor/modal-ch
         ModalLoginComponent,
         ModalRegistryComponent,
         ModalSettingsComponent,
-        ModalCharacterComponent
+        ModalCharacterComponent,
+        ModalAdminPanelComponent
     ],
     imports: [
         BrowserModule,
