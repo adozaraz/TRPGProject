@@ -1,8 +1,14 @@
 <div>
-    <ul class="list-group list-group-horizontal">
-        <li class="list-group-item">Запросы на добавление в глобальную базу данных</li>
-        <li class="list-group-item">Бестиарий</li>
-        <li class="list-group-item">Заклинания</li>
-        <li class="list-group-item">Предметы</li>
-    </ul>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action active" id="requests" data-bs-toggle="list" aria-controls="requests" href="#lRequests">Запросы на добавление в глобальную базу</a>
+        <a class="list-group-item list-group-item-action" id="spellsDb" data-bs-toggle="list" aria-controls="spellsDb" href="#lSpellsDb">Заклинания</a>
+        <a class="list-group-item list-group-item-action" id="magicItemsDb" data-bs-toggle="list" aria-controls="magicItemsDb" href="#lMagicItemsDb">Магические предметы</a>
+        <a class="list-group-item list-group-item-action" id="bestiaryDb" data-bs-toggle="list" aria-controls="bestiaryDb" href="#lBestiaryDb">Бестиарий</a>
+    </div>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="lRequests" role="tabpanel" aria-labelledby="requests">Тест 1</div>
+        <div class="tab-pane fade" id="lSpellsDb" role="tabpanel" aria-labelledby="spellsDb">Тест 2</div>
+        <div class="tab-pane fade" id="lMagicItemsDb" role="tabpanel" aria-labelledby="magicItemsDb">Тест 3</div>
+        <div class="tab-pane fade" id="lBestiaryDb" role="tabpanel" aria-labelledby="bestiaryDb">Тест 4</div>
+    </div>
 </div>

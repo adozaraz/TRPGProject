@@ -5,7 +5,10 @@ export enum QueryItem {
     Spells,
     MagicItems,
     Bestiary,
-    CharacterList
+    CharacterList,
+    OwnSpells,
+    OwnMagicItems,
+    OwnBestiary
 }
 
 @Component({
@@ -37,6 +40,15 @@ export class DatabaseComponent implements OnInit {
                     break;
                 case QueryItem.CharacterList:
                     this.infoString = "Листы персонажей";
+                    break;
+                case QueryItem.OwnSpells:
+                    this.infoString = "Мои аклинания";
+                    break;
+                case QueryItem.OwnMagicItems:
+                    this.infoString = "Мои магические предметы";
+                    break;
+                case QueryItem.OwnBestiary:
+                    this.infoString = "Мой бестиарий";
                     break;
                 default:
                     this.infoString = "Пасхалка";

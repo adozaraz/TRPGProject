@@ -8,6 +8,7 @@ import {Component} from "@angular/core";
     styleUrls: ['./modal-admin.scss']
 })
 export class ModalAdminPanelComponent {
+    curTab: number = 1;
     constructor(private userService: UserService) {
     }
 }

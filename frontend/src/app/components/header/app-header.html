@@ -12,6 +12,14 @@
                 <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 0 }">Заклинания</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 1 }">Магические предметы</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 2 }">Бестиарий</a></li>
+                <div *ngIf="userService.currentUser != null">
+                    <li><hr class="dropdown-divider" ></li>
+                    <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 4 }">Мои заклинания</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 5 }">Мои магические предметы</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/database']" [queryParams]="{ queryItem: 6 }">Мой бестиарий</a></li>
+                </div>
+
+
             </ul>
         </li>
       </ul>

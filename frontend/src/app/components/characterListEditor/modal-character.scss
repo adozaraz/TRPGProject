@@ -21,3 +21,64 @@
     margin-top: 50px;
     z-index: 2;
 }
+
+.col {
+    width: 150px;
+}
+
+.outlineSavingThrows {
+    background: #ffffff;
+    height: fit-content;
+    width: 210px;
+    border-radius: 10%;
+    position: relative;
+    display: block;
+    padding-left: 10px;
+    margin-top: 10px;
+    border: 1px solid red;
+}
+
+.outlineStats {
+    background: #ffffff;
+    height: fit-content;
+    position: relative;
+    display: block;
+    border: 1px solid blue;
+    margin: 10px;
+    padding-bottom: 5px;
+}
+
+.outlineSkillsProf {
+    background: #ffffff;
+    height: fit-content;
+    width: 210px;
+    position: relative;
+    display: block;
+    border: 1px solid brown;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.outlineBasicInformation {
+    background: #ffffff;
+    height: fit-content;
+    width: fit-content;
+    display: block;
+    border: 1px solid brown;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.setBack {
+    background-image: url("~src/assets/dungeons-dragons-monster-magician-wolves-artwork-d-d-others.jpeg");
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    opacity: 100%;
+}
+

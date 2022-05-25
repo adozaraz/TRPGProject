@@ -27,7 +27,24 @@ export class ModalCharacterComponent {
             charisma: ""
         });
         this.skillsProf = this.formBuilder.group({
-
+            athletics: false,
+            acrobatics: false,
+            sleightOfHands: false,
+            stealth: false,
+            arcana: false,
+            history: false,
+            investigation: false,
+            nature: false,
+            religion: false,
+            animalHandling: false,
+            insight: false,
+            medicine: false,
+            perception: false,
+            survival: false,
+            deception: false,
+            intimidation: false,
+            performance: false,
+            persuasion: false
         });
         this.savingThrowsProf = this.formBuilder.group({
             strength: false,
