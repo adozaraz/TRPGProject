@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <form [formGroup]="loginForm">
+            <div [formGroup]="loginForm">
                 <div>
                     <label for="login" class="col-form-label">Логин</label>
                     <input type="text" class="form-control" id="login" formControlName="login">
@@ -16,7 +16,7 @@
                     <label for="password" class="col-form-label">Пароль</label>
                     <input class="form-control" id="password" formControlName="password" type="password">
                 </div>
-            </form>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Войти</button>

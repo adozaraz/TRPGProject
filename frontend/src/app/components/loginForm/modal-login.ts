@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {AuthLoginInfo} from "../../security/login-info";
 import {TokenStorageService} from "../../security/token-storage.service";
@@ -18,8 +18,8 @@ export class ModalLoginComponent {
         public tokenStorage: TokenStorageService
     ) {
         this.loginForm = this.formBuilder.group({
-            login: "",
-            password: ""
+            login: new FormControl(),
+            password: new FormControl()
         });
     }
 

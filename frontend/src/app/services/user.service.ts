@@ -6,6 +6,8 @@ import {AuthLoginInfo} from "../security/login-info";
 import {Observable} from "rxjs";
 import {JwtResponse} from "../security/jwt-response";
 import {SignUpInfo} from "../security/signup-info";
+import {FormGroup} from "@angular/forms";
+import {PasswordFormModel} from "../models/passwordForm.model";
 
 const httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -59,6 +61,10 @@ export class UserService {
     signOut() {
         // @ts-ignore
         this.currentUser = null;
+    }
+
+    changePassword(passwordChangeForm: PasswordFormModel) {
+        return this.http.post("/api/users/auth/password/change", passwordChangeForm);
     }
 }
 

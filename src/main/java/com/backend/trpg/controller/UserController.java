@@ -3,6 +3,7 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.User;
 import com.backend.trpg.security.jwt.JwtProvider;
 import com.backend.trpg.security.request.LoginForm;
+import com.backend.trpg.security.request.PasswordChangeForm;
 import com.backend.trpg.security.request.SignUpForm;
 import com.backend.trpg.security.response.JwtResponse;
 import com.backend.trpg.security.response.ResponseMessage;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -87,5 +89,10 @@ public class UserController {
         );
         JwtResponse jwtResponse = jwtProvider.generateJwtResponse(authentication, (UserDetails) authentication.getPrincipal());
         return ResponseEntity.ok(jwtResponse);
+    }
+
+    @PostMapping("/auth/password/change")
+    public ResponseEntity<?> changePassword(@RequestBody PasswordChangeForm passwordChanger, Authentication authentication) {
+        return this.userService.changePassword(passwordChanger, authentication, encoder);
     }
 }

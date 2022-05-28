@@ -22,7 +22,7 @@ export class ModalRegistryComponent {
         this.registryForm = this.formBuilder.group({
             login: new FormControl("", [Validators.required]),
             email: new FormControl("", [Validators.email, Validators.required]),
-            password: ""
+            password: new FormControl()
         });
     }
 
