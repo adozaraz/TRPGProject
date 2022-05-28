@@ -31,4 +31,9 @@ public class SpellsController {
     public Spell save(@RequestBody Spell spell) {
         return this.spellsService.save(spell);
     }
+
+    @GetMapping("/list/data/global")
+    public Iterable<Spell> getGlobalData() {
+        return this.spellsService.getGlobalData();
+    }
 }

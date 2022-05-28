@@ -28,4 +28,9 @@ public class SpellsServiceImpl implements SpellsService {
     public Spell save(Spell spell) {
         return this.spellsRepository.save(spell);
     }
+
+    @Override
+    public Iterable<Spell> getGlobalData() {
+        return this.spellsRepository.getGlobalData();
+    }
 }

@@ -31,4 +31,9 @@ public class ItemController {
     public Item save(@RequestBody Item item) {
         return this.itemService.save(item);
     }
+
+    @GetMapping("/list/data/global")
+    public Iterable<Item> getGlobalData() {
+        return this.itemService.getGlobalData();
+    }
 }

@@ -10,4 +10,6 @@ public interface ItemService {
     Optional<Item> findById(@NonNull UUID id);
     Optional<Item> findByItemName(@NonNull String itemName);
     Item save(Item item);
+
+    Iterable<Item> getGlobalData();
 }

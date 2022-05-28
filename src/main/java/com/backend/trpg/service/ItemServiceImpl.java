@@ -27,4 +27,9 @@ public class ItemServiceImpl implements ItemService {
     public Item save(Item item) {
         return this.itemRepository.save(item);
     }
+
+    @Override
+    public Iterable<Item> getGlobalData() {
+        return this.itemRepository.getGlobalData();
+    }
 }

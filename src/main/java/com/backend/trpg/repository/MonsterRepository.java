@@ -13,4 +13,6 @@ import java.util.UUID;
 public interface MonsterRepository extends CrudRepository<Monster, UUID> {
     @Query("select monster from Monster monster where monster.name = :name")
     Optional<Monster> findByName(@NonNull String name);
+    @Query("select monster from Monster monster where monster.globalDatabase = true")
+    Iterable<Monster> getGlobalData();
 }

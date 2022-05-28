@@ -13,4 +13,6 @@ import java.util.UUID;
 public interface ItemRepository extends CrudRepository<Item, UUID> {
     @Query("select item from Item item where item.itemName = :itemName")
     Optional<Item> findByItemName(@NonNull String itemName);
+    @Query("select item from Item item where item.globalDatabase = true")
+    Iterable<Item> getGlobalData();
 }

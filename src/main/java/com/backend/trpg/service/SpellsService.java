@@ -14,4 +14,5 @@ public interface SpellsService {
     Spell save(Spell spell);
 
 
+    Iterable<Spell> getGlobalData();
 }

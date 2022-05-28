@@ -27,4 +27,9 @@ public class MonsterServiceImpl implements MonsterService {
     public Monster save(Monster monster) {
         return this.monsterRepository.save(monster);
     }
+
+    @Override
+    public Iterable<Monster> getGlobalData() {
+        return this.monsterRepository.getGlobalData();
+    }
 }

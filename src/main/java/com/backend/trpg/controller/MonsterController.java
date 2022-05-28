@@ -30,4 +30,9 @@ public class MonsterController {
     public Monster save(@RequestBody Monster monster) {
         return this.monsterService.save(monster);
     }
+
+    @GetMapping("/list/data/global")
+    public Iterable<Monster> getGlobalData() {
+        return this.monsterService.getGlobalData();
+    }
 }

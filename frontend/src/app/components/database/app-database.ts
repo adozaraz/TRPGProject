@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {DatabaseService} from "../../services/database.service";
 
 export enum QueryItem {
     Spells,
@@ -20,8 +21,10 @@ export enum QueryItem {
 export class DatabaseComponent implements OnInit {
     queryItem: QueryItem = QueryItem.Bestiary;
     infoString: string = "Бестиарий"
+    // @ts-ignore
+    queryList: any[];
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {
     }
 
 
@@ -54,7 +57,15 @@ export class DatabaseComponent implements OnInit {
                     this.infoString = "Пасхалка";
                     break;
             }
+            // @ts-ignore
+            this.databaseService.getGlobalData(this.queryItem)?.subscribe((data: any[]) => {
+                this.queryList = data;
+            });
         })
+    }
+
+    checkData() {
+        console.log(this.queryList);
     }
 
 }
