@@ -17,4 +17,6 @@ public interface ItemRepository extends CrudRepository<Item, UUID> {
     Iterable<Item> getGlobalData();
     @Query("select item from Item item")
     Iterable<Item> getAllData();
+    @Query("select item from Item item where item.owner.id = :id")
+    Iterable<Item> getUserData(UUID id);
 }

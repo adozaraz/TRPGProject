@@ -8,20 +8,20 @@
         </div>
         <div class="modal-body">
             <div [formGroup]="itemCreator">
-                <div class="form-group row">
+                <div class="form-group row mt-1 mb-1">
                     <label for="itemName" class="col-sm-2 col-form-label">Название</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="itemName" formControlName="name" />
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mt-1 mb-1">
                     <label for="itemDesc" class="col-sm-2 col-form-label">Описание</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="itemDesc" formControlName="description" />
                     </div>
                 </div>
 <!--    Создание магического предмета            -->
-                <div class="form-group row" *ngIf="itemType == 1">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 1">
                     <label for="itemRarity" class="col-sm-2 col-form-label">Редкость</label>
                     <div class="col-sm-10">
                         <select class="form-select" id="itemRarity" formControlName="rarity">
@@ -34,31 +34,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 1">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 1">
                     <div class="form-group">
                         <input class="col-sm-10 form-check-input" type="checkbox" id="attunementRequirement" formControlName="attunementRequired">
-                        <label for="attunementRequirement" class="col-form-label col-ms-2">Требуется ли настройка на предмет</label>
+                        <label for="attunementRequirement" class="form-check-label ms-2">Требуется ли настройка на предмет</label>
                     </div>
                 </div>
 <!--    Создание заклинания            -->
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <label for="spellLevel" class="col-sm-2 col-form-label">Уровень заклинания</label>
                     <div class="col-sm-10">
                         <select class="form-select" id="spellLevel" formControlName="spellLevel">
-                            <option value="0" selected>Заговор</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            <option value=0 selected>Заговор</option>
+                            <option value=1>1</option>
+                            <option value=2>2</option>
+                            <option value=3>3</option>
+                            <option value=4>4</option>
+                            <option value=5>5</option>
+                            <option value=6>6</option>
+                            <option value=7>7</option>
+                            <option value=8>8</option>
+                            <option value=9>9</option>
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <label for="school" class="col-sm-2 col-form-label">Школа</label>
                     <div class="col-sm-10">
                         <select class="form-select" id="school" formControlName="school">
@@ -73,44 +73,44 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <label for="actionTime" class="col-sm-2 col-form-label">Время накладывания</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="actionTime" formControlName="actionTime" />
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <label for="distance" class="col-sm-2 col-form-label">Дистанция</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="distance" formControlName="distance" />
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <div class="form-group">
                         <input class="col-sm-10 form-check-input" type="checkbox" id="verbalComp" formControlName="verbalComp">
-                        <label for="verbalComp" class="col-form-label col-ms-2">Вербальный компонент</label>
+                        <label for="verbalComp" class="form-check-label ms-2">Вербальный компонент</label>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <div class="form-group">
                         <input class="col-sm-10 form-check-input" type="checkbox" id="somaticComp" formControlName="somaticComp">
-                        <label for="somaticComp" class="col-form-label col-ms-2">Соматический компонент</label>
+                        <label for="somaticComp" class="form-check-label ms-2">Соматический компонент</label>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0">
                     <div class="form-group">
                         <input class="col-sm-10 form-check-input" type="checkbox" id="materialComp" formControlName="materialComp">
-                        <label for="materialComp" class="col-form-label col-ms-2">Материальный компонент</label>
+                        <label for="materialComp" class="form-check-label ms-2">Материальный компонент</label>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 0 && this.itemCreator.get('materialComp')?.value != ''">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 0 && this.itemCreator.get('materialComp')?.value != ''">
                     <label for="material" class="col-sm-2 col-form-label">Материал</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="material" formControlName="material" />
                     </div>
                 </div>
                 <!-- Создание монстра -->
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="size" class="col-sm-2 col-form-label">Размер монстра</label>
                     <div class="col-sm-10">
                         <select class="form-select" id="size" formControlName="size">
@@ -123,13 +123,13 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="race" class="col-sm-2 col-form-label">Раса</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="race" formControlName="race" />
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="alignment" class="col-sm-2 col-form-label">Мировоззрение</label>
                     <div class="col-sm-10">
                         <select class="form-select" id="alignment" formControlName="alignment">
@@ -145,161 +145,175 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="armorClass" class="col-sm-2 col-form-label">Класс Брони</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="armorClass" formControlName="armorClass" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="hitPoints" class="col-sm-2 col-form-label">Количество жизней</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="hitPoints" formControlName="hitPoints" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="speed" class="col-sm-2 col-form-label">Скорость (в футах)</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="speed" formControlName="speed" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="challengeRating" class="col-sm-2 col-form-label">Уровень опасности</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="challengeRating" formControlName="challengeRating" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                     </div>
                 </div>
-                <div class="form-group row" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1" *ngIf="itemType == 2">
                     <label for="masteryBonus" class="col-sm-2 col-form-label">Бонус мастерства</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="masteryBonus" formControlName="masteryBonus" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
                     </div>
                 </div>
             </div>
-            <form role="form" class="col" [formGroup]="stats" *ngIf="itemType == 2">
-                <div class="form-group">
-                    <label for="Strength" class="col-form-label" style="margin-left: 56px">Сила</label>
-                    <input type="text" class="form-control inputBox" id="Strength" formControlName="strength" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <div [formGroup]="stats" *ngIf="itemType == 2">
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Strength" class="col-sm-2 col-form-label">Сила</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Strength" formControlName="strength" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Dexterity" class="col-form-label" style="margin-left: 40px">Ловкость</label>
-                    <input type="text" class="form-control inputBox" id="Dexterity" formControlName="dexterity" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Dexterity" class="col-sm-2 col-form-label">Ловкость</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Dexterity" formControlName="dexterity" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Constitution" class="col-form-label" style="margin-left: 18px">Телосложение</label>
-                    <input type="text" class="form-control inputBox" id="Constitution" formControlName="constitution" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Constitution" class="col-sm-2 col-form-label">Телосложение</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Constitution" formControlName="constitution" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Intelligence" class="col-form-label" style="margin-left: 37px">Интеллект</label>
-                    <input type="text" class="form-control inputBox" id="Intelligence" formControlName="intelligence" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Intelligence" class="col-sm-2 col-form-label">Интеллект</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Intelligence" formControlName="intelligence" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Wisdom" class="col-form-label" style="margin-left: 40px">Мудрость</label>
-                    <input type="text" class="form-control inputBox" id="Wisdom" formControlName="wisdom" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Wisdom" class="col-sm-2 col-form-label">Мудрость</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Wisdom" formControlName="wisdom" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="Charisma" class="col-form-label" style="margin-left: 44px">Харизма</label>
-                    <input type="text" class="form-control inputBox" id="Charisma" formControlName="charisma" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                <div class="form-group row mt-1 mb-1">
+                    <label for="Charisma" class="col-sm-2 col-form-label">Харизма</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control inputBox" id="Charisma" formControlName="charisma" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div>Владение спасбросками</div>
             <form role="form" [formGroup]="savingThrowsProf" *ngIf="itemType == 2">
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="strengthSave" formControlName="strength">
-                    <label for="strengthSave" class="col-form-label ms-2">Силы</label>
+                    <label for="strengthSave" class="form-check-label ms-2">Силы</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="dexteritySave" formControlName="dexterity">
-                    <label for="dexteritySave" class="col-form-label ms-2">Ловкости</label>
+                    <label for="dexteritySave" class="form-check-label ms-2">Ловкости</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="constitutionSave" formControlName="constitution">
-                    <label for="constitutionSave" class="col-form-label ms-2">Телосложения</label>
+                    <label for="constitutionSave" class="form-check-label ms-2">Телосложения</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="intelligenceSave" formControlName="intelligence">
-                    <label for="intelligenceSave" class="col-form-label ms-2">Интеллекта</label>
+                    <label for="intelligenceSave" class="form-check-label ms-2">Интеллекта</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="wisdomSave" formControlName="wisdom">
-                    <label for="wisdomSave" class="col-form-label ms-2">Мудрости</label>
+                    <label for="wisdomSave" class="form-check-label ms-2">Мудрости</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="charismaSave" formControlName="charisma">
-                    <label for="charismaSave" class="col-form-label ms-2">Харизмы</label>
+                    <label for="charismaSave" class="form-check-label ms-2">Харизмы</label>
                 </div>
             </form>
+            <div>Навыки</div>
             <form role="form" [formGroup]="skillsProf" *ngIf="itemType == 2">
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="athletics" formControlName="athletics">
-                    <label for="athletics" class="col-form-label ms-2">Атлетика</label>
+                    <label for="athletics" class="form-check-label ms-2">Атлетика</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="acrobatics" formControlName="acrobatics">
-                    <label for="acrobatics" class="col-form-label ms-2">Акробатика</label>
+                    <label for="acrobatics" class="form-check-label ms-2">Акробатика</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="sleightOfHands" formControlName="sleightOfHands">
-                    <label for="sleightOfHands" class="col-form-label ms-2">Ловкость рук</label>
+                    <label for="sleightOfHands" class="form-check-label ms-2">Ловкость рук</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="stealth" formControlName="stealth">
-                    <label for="stealth" class="col-form-label ms-2">Скрытность</label>
+                    <label for="stealth" class="form-check-label ms-2">Скрытность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="arcana" formControlName="arcana">
-                    <label for="arcana" class="col-form-label ms-2">Магия</label>
+                    <label for="arcana" class="form-check-label ms-2">Магия</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="history" formControlName="history">
-                    <label for="history" class="col-form-label ms-2">История</label>
+                    <label for="history" class="form-check-label ms-2">История</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="investigation" formControlName="investigation">
-                    <label for="investigation" class="col-form-label ms-2">Анализ</label>
+                    <label for="investigation" class="form-check-label ms-2">Анализ</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="nature" formControlName="nature">
-                    <label for="nature" class="col-form-label ms-2">Природа</label>
+                    <label for="nature" class="form-check-label ms-2">Природа</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="religion" formControlName="religion">
-                    <label for="religion" class="col-form-label ms-2">Религия</label>
+                    <label for="religion" class="form-check-label ms-2">Религия</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="animalHandling" formControlName="animalHandling">
-                    <label for="animalHandling" class="col-form-label ms-2">Уход за животными</label>
+                    <label for="animalHandling" class="form-check-label ms-2">Уход за животными</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="insight" formControlName="insight">
-                    <label for="insight" class="col-form-label ms-2">Проницательность</label>
+                    <label for="insight" class="form-check-label ms-2">Проницательность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="medicine" formControlName="medicine">
-                    <label for="medicine" class="col-form-label ms-2">Медицина</label>
+                    <label for="medicine" class="form-check-label ms-2">Медицина</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="perception" formControlName="perception">
-                    <label for="perception" class="col-form-label ms-2">Внимательность</label>
+                    <label for="perception" class="form-check-label ms-2">Внимательность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="survival" formControlName="survival">
-                    <label for="survival" class="col-form-label ms-2">Выживание</label>
+                    <label for="survival" class="form-check-label ms-2">Выживание</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="deception" formControlName="deception">
-                    <label for="deception" class="col-form-label ms-2">Обман</label>
+                    <label for="deception" class="form-check-label ms-2">Обман</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="intimidation" formControlName="intimidation">
-                    <label for="intimidation" class="col-form-label ms-2">Запугивание</label>
+                    <label for="intimidation" class="form-check-label ms-2">Запугивание</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="performance" formControlName="performance">
-                    <label for="performance" class="col-form-label ms-2">Выступление</label>
+                    <label for="performance" class="form-check-label ms-2">Выступление</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="persuasion" formControlName="persuasion">
-                    <label for="persuasion" class="col-form-label ms-2">Убеждение</label>
+                    <label for="persuasion" class="form-check-label ms-2">Убеждение</label>
                 </div>
             </form>
         </div>

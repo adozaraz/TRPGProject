@@ -3,6 +3,7 @@ package com.backend.trpg.service;
 import com.backend.trpg.entities.Item;
 import lombok.NonNull;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -14,4 +15,6 @@ public interface ItemService {
     Iterable<Item> getGlobalData();
 
     Iterable<Item> getAllData();
+
+    Iterable<Item> getUserData(Principal principal);
 }

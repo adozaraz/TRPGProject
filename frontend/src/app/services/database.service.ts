@@ -22,6 +22,19 @@ export class DatabaseService {
         }
     }
 
+    getUserCreatedData(type: QueryItem) {
+        switch (type) {
+            case QueryItem.OwnSpells:
+                return this.http.get("/api/spells/list/data/user");
+            case QueryItem.OwnMagicItems:
+                return this.http.get("/api/items/list/data/user");
+            case QueryItem.OwnBestiary:
+                return this.http.get("/api/monster/list/data/user");
+            default:
+                return null;
+        }
+    }
+
     getAllData(type: QueryItem) {
         switch (type) {
             case QueryItem.Spells:

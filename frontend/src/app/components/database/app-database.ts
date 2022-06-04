@@ -46,7 +46,7 @@ export class DatabaseComponent implements OnInit {
                     this.infoString = "Листы персонажей";
                     break;
                 case QueryItem.OwnSpells:
-                    this.infoString = "Мои аклинания";
+                    this.infoString = "Мои заклинания";
                     break;
                 case QueryItem.OwnMagicItems:
                     this.infoString = "Мои магические предметы";
@@ -58,10 +58,25 @@ export class DatabaseComponent implements OnInit {
                     this.infoString = "Пасхалка";
                     break;
             }
-            // @ts-ignore
-            this.databaseService.getGlobalData(this.queryItem)?.subscribe((data: any[]) => {
-                this.queryList = data;
-            });
+
+            switch (this.queryItem) {
+                case QueryItem.Spells:
+                case QueryItem.MagicItems:
+                case QueryItem.Bestiary:
+                    // @ts-ignore
+                    this.databaseService.getGlobalData(this.queryItem)?.subscribe((data: any[]) => {
+                        this.queryList = data;
+                    });
+                    break;
+                case QueryItem.OwnSpells:
+                case QueryItem.OwnMagicItems:
+                case QueryItem.OwnBestiary:
+                    // @ts-ignore
+                    this.databaseService.getUserCreatedData(this.queryItem)?.subscribe((data: any[]) => {
+                        this.queryList = data;
+                    });
+                    break;
+            }
         })
     }
 

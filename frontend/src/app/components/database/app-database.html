@@ -6,11 +6,21 @@
         <button *ngIf="queryItem == 3" class="btn btn-primary btnParams " [routerLink]="['/characterCreation']">Создать персонажа</button>
         <button *ngIf="queryItem != 3 && userService.currentUser != null" class="btn btn-primary btnParams" data-bs-toggle="modal" data-bs-target="#itemCreation">Создать предмет</button>
     </div>
-    <ul class="d-flex list-group mt-2 ms-2 me-2 list-inline mx-auto inner-custom align-content-center">
-        <ul class="list-group list-group-horizontal" *ngFor="let item of queryList;">
+    <ul class="d-flex list-group mt-2 ms-2 me-2 inner-custom align-items-center">
+        <ul class="list-group list-group-horizontal mt-1 mb-1">
+            <li class="list-group-item">Название</li>
+            <li class="list-group-item">Имя автора</li>
+            <li class="list-group-item">Действия</li>
+        </ul>
+        <ul class="list-group list-group-horizontal mt-1 mb-1" *ngFor="let item of queryList;">
             <li class="list-group-item">{{item.name}}</li>
             <li class="list-group-item">{{item.owner.username}}</li>
-            <li class="list-group-item">Карточка</li>
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" (click)="checkData()">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+            </li>
         </ul>
     </ul>
 

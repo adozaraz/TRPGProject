@@ -5,6 +5,7 @@ import com.backend.trpg.service.ItemService;
 import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,5 +41,10 @@ public class ItemController {
     @GetMapping("/list/data/all")
     public Iterable<Item> getAllData() {
         return this.itemService.getAllData();
+    }
+
+    @GetMapping("/list/data/user")
+    public Iterable<Item> getUserData(Principal principal) {
+        return this.itemService.getUserData(principal);
     }
 }

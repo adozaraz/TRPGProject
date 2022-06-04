@@ -1,6 +1,7 @@
 package com.backend.trpg.repository;
 
 import com.backend.trpg.entities.Monster;
+import com.backend.trpg.entities.User;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,4 +18,6 @@ public interface MonsterRepository extends CrudRepository<Monster, UUID> {
     Iterable<Monster> getGlobalData();
     @Query("select monster from Monster monster")
     Iterable<Monster> getAllData();
+    @Query("select monster from Monster monster where monster.owner.id = :id")
+    Iterable<Monster> getUserData(UUID id);
 }

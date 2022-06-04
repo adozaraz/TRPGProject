@@ -20,7 +20,7 @@ export class Spell {
         this.owner = owner;
         this.name = spellGroup.get("name")?.value;
         this.description = spellGroup.get("description")?.value;
-        this.level = spellGroup.get("level")?.value;
+        this.level = spellGroup.get("spellLevel")?.value;
         this.school = spellGroup.get("school")?.value;
         this.actionTime = spellGroup.get("actionTime")?.value;
         this.distance = spellGroup.get("distance")?.value;

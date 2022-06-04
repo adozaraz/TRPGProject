@@ -3,6 +3,7 @@ package com.backend.trpg.service;
 import com.backend.trpg.entities.Spell;
 import lombok.NonNull;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,4 +18,6 @@ public interface SpellsService {
     Iterable<Spell> getGlobalData();
 
     Iterable<Spell> getAllData();
+
+    Iterable<Spell> getUserData(Principal principal);
 }

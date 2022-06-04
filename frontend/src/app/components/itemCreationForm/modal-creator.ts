@@ -6,6 +6,9 @@ import {Spell} from "../../models/spell.model";
 import {UserService} from "../../services/user.service";
 import {MagicItem} from "../../models/magicItem.model";
 import {Monster} from "../../models/monster.model";
+import {StatsService} from "../../services/stats.service";
+import {SavingThrowsProfService} from "../../services/savingThrowsProf.service";
+import {SkillsProfService} from "../../services/skillsProf.service";
 
 export enum Rarity {
     COMMON,
@@ -33,7 +36,12 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
     // @ts-ignore
     skillsProf: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private databaseService: DatabaseService, private userService: UserService) {
+    constructor(private formBuilder: FormBuilder,
+                private databaseService: DatabaseService,
+                private userService: UserService,
+                private statsService: StatsService,
+                private savingThrowsProfService: SavingThrowsProfService,
+                private skillsProfService: SkillsProfService) {
     }
 
     ngOnInit(): void {
@@ -43,20 +51,20 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                 this.itemCreator = this.formBuilder.group({
                     name: new FormControl("", [Validators.requiredTrue]),
                     description: new FormControl(),
-                    spellLevel: new FormControl(),
+                    spellLevel: new FormControl(0),
                     school: new FormControl(),
                     actionTime: new FormControl(),
                     distance: new FormControl(),
-                    verbalComp: new FormControl(),
-                    somaticComp: new FormControl(),
-                    materialComp: new FormControl(),
+                    verbalComp: new FormControl(false),
+                    somaticComp: new FormControl(false),
+                    materialComp: new FormControl(false),
                     material: new FormControl("")
                 });
                 break;
             case QueryItem.MagicItems:
                 this.itemCreator = this.formBuilder.group({
                     name: new FormControl("", [Validators.requiredTrue]),
-                    attunementRequired: new FormControl(),
+                    attunementRequired: new FormControl(false),
                     rarity: new FormControl(0),
                     description: new FormControl(),
                 });
@@ -198,6 +206,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
     }
 
     onSubmit() {
+        // @ts-ignore
         let outputData;
         switch (this.itemType) {
             case QueryItem.Spells:
@@ -214,9 +223,28 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     this.savingThrowsProf);
                 break;
         }
-        this.databaseService.save(this.itemType, outputData)?.subscribe((data) => {
-            console.log("Added successfully");
-        });
+        if (this.itemType == QueryItem.Bestiary) {
+            // @ts-ignore
+            this.statsService.save(outputData.stats).subscribe((data) => {
+                console.log("Stats saved")
+                // @ts-ignore
+                this.skillsProfService.save(outputData.skillsProf).subscribe((data) => {
+                    console.log("skills saved")
+                    // @ts-ignore
+                    this.savingThrowsProfService.save(outputData.savingThrowsProf).subscribe((data) => {
+                        console.log("save saved")
+                        // @ts-ignore
+                        this.databaseService.save(this.itemType, outputData)?.subscribe((data) => {
+                            console.log("Added successfully");
+                        });
+                    });
+                });
+            });
+        } else {
+            this.databaseService.save(this.itemType, outputData)?.subscribe((data) => {
+                console.log("Added successfully");
+            });
+        }
         this.itemCreator.reset();
         this.skillsProf.reset();
         this.savingThrowsProf.reset();

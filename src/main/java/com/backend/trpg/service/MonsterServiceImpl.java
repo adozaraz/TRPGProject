@@ -1,11 +1,15 @@
 package com.backend.trpg.service;
 
 import com.backend.trpg.entities.Monster;
+import com.backend.trpg.entities.User;
 import com.backend.trpg.repository.MonsterRepository;
+import com.backend.trpg.repository.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,6 +17,10 @@ import java.util.UUID;
 public class MonsterServiceImpl implements MonsterService {
     @Autowired
     private MonsterRepository monsterRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public Optional<Monster> findById(@NonNull UUID id) {
         return monsterRepository.findById(id);
@@ -36,5 +44,11 @@ public class MonsterServiceImpl implements MonsterService {
     @Override
     public Iterable<Monster> getAllData() {
         return this.monsterRepository.getAllData();
+    }
+
+    @Override
+    public Iterable<Monster> getUserData(Principal principal) {
+        Optional<User> user = userRepository.findByUsername(principal.getName());
+        return user.map(value -> this.monsterRepository.getUserData(value.getId())).orElse(null);
     }
 }

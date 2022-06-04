@@ -2,7 +2,9 @@ package com.backend.trpg.service;
 
 import com.backend.trpg.entities.Monster;
 import lombok.NonNull;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -14,4 +16,6 @@ public interface MonsterService {
     Iterable<Monster> getGlobalData();
 
     Iterable<Monster> getAllData();
+
+    Iterable<Monster> getUserData(Principal principal);
 }

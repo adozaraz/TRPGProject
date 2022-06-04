@@ -3,8 +3,10 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.Monster;
 import com.backend.trpg.service.MonsterService;
 import lombok.NonNull;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,5 +41,10 @@ public class MonsterController {
     @GetMapping("/list/data/all")
     public Iterable<Monster> getAllData() {
         return this.monsterService.getAllData();
+    }
+
+    @GetMapping("/list/data/user")
+    public Iterable<Monster> getUserData(Principal principal) {
+        return this.monsterService.getUserData(principal);
     }
 }

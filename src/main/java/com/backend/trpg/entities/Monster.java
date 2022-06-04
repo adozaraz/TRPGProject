@@ -52,15 +52,15 @@ public class Monster {
 
     private Integer speed;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stats_id")
     private Stats stats;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "skills_prof_id")
     private SkillsProf skillsProf;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "saving_throws_prof_id")
     private SavingThrowsProf savingThrowsProf;
 

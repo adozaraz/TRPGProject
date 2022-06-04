@@ -1,11 +1,15 @@
 package com.backend.trpg.service;
 
 import com.backend.trpg.entities.Item;
+import com.backend.trpg.entities.User;
 import com.backend.trpg.repository.ItemRepository;
+import com.backend.trpg.repository.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,6 +17,9 @@ import java.util.UUID;
 public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
     @Override
     public Optional<Item> findById(@NonNull UUID id) {
         return itemRepository.findById(id);
@@ -37,4 +44,12 @@ public class ItemServiceImpl implements ItemService {
     public Iterable<Item> getAllData() {
         return this.itemRepository.getAllData();
     }
+
+    @Override
+    public Iterable<Item> getUserData(Principal principal) {
+        Optional<User> user = this.userRepository.findByUsername(principal.getName());
+        return user.map(value -> this.itemRepository.getUserData(value.getId())).orElse(null);
+    }
+
+
 }

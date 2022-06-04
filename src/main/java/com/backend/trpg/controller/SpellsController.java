@@ -5,6 +5,7 @@ import com.backend.trpg.service.SpellsService;
 import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,11 +35,17 @@ public class SpellsController {
 
     @GetMapping("/list/data/global")
     public Iterable<Spell> getGlobalData() {
-        return this.spellsService.getGlobalData();
+        Iterable<Spell> spells = this.spellsService.getGlobalData();
+        return spells;
     }
 
     @GetMapping("/list/data/all")
     public Iterable<Spell> getAllData() {
         return this.spellsService.getAllData();
+    }
+
+    @GetMapping("/list/data/user")
+    public Iterable<Spell> getUserData(Principal principal) {
+        return this.spellsService.getUserData(principal);
     }
 }
