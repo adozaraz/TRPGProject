@@ -32,7 +32,7 @@ export class UserService {
     }
 
     // @ts-ignore
-    signUp(info: SignUpInfo): Observable<string> {
+    signUp(info: SignUpInfo) {
         return this.http.post<string>(this.signupUrl, info, httpOptions);
     }
     // @ts-ignore
@@ -42,17 +42,13 @@ export class UserService {
             if (callback) callback();
         });
     }
-
-    loadUsers() {
-        return this.http.get("/api/users/");
-    }
     // @ts-ignore
     searchByNameContaining(req){
-        return this.http.get(`/api/users/search/${req}`);
+        return this.http.get<User>(`/api/users/search/${req}`);
     }
     // @ts-ignore
     getUser(id) {
-        return this.http.get(`/api/users/get/${id}`);
+        return this.http.get<User>(`/api/users/get/${id}`);
     }
     saveUser(user: User) {
         return this.http.post(`/api/users/save`, user);

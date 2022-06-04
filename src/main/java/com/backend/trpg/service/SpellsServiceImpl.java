@@ -33,4 +33,9 @@ public class SpellsServiceImpl implements SpellsService {
     public Iterable<Spell> getGlobalData() {
         return this.spellsRepository.getGlobalData();
     }
+
+    @Override
+    public Iterable<Spell> getAllData() {
+        return this.spellsRepository.getAllData();
+    }
 }

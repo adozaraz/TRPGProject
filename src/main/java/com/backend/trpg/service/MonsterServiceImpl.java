@@ -32,4 +32,9 @@ public class MonsterServiceImpl implements MonsterService {
     public Iterable<Monster> getGlobalData() {
         return this.monsterRepository.getGlobalData();
     }
+
+    @Override
+    public Iterable<Monster> getAllData() {
+        return this.monsterRepository.getAllData();
+    }
 }

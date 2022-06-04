@@ -35,4 +35,9 @@ public class MonsterController {
     public Iterable<Monster> getGlobalData() {
         return this.monsterService.getGlobalData();
     }
+
+    @GetMapping("/list/data/all")
+    public Iterable<Monster> getAllData() {
+        return this.monsterService.getAllData();
+    }
 }

@@ -20,6 +20,19 @@ export class DatabaseService {
             default:
                 return null;
         }
-
     }
+
+    getAllData(type: QueryItem) {
+        switch (type) {
+            case QueryItem.Spells:
+                return this.http.get("/api/spells/list/data/all");
+            case QueryItem.MagicItems:
+                return this.http.get("/api/items/list/data/all");
+            case QueryItem.Bestiary:
+                return this.http.get("/api/monster/list/data/all");
+            default:
+                return null;
+        }
+    }
+
 }

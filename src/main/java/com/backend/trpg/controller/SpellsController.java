@@ -36,4 +36,9 @@ public class SpellsController {
     public Iterable<Spell> getGlobalData() {
         return this.spellsService.getGlobalData();
     }
+
+    @GetMapping("/list/data/all")
+    public Iterable<Spell> getAllData() {
+        return this.spellsService.getAllData();
+    }
 }

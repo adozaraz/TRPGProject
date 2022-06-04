@@ -36,4 +36,9 @@ public class ItemController {
     public Iterable<Item> getGlobalData() {
         return this.itemService.getGlobalData();
     }
+
+    @GetMapping("/list/data/all")
+    public Iterable<Item> getAllData() {
+        return this.itemService.getAllData();
+    }
 }

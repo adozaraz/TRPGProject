@@ -24,6 +24,10 @@ public class Spell {
 
     private String name;
 
+    private String description;
+
+    private Boolean globalDatabase;
+
     private Integer level;
 
     private String school;
@@ -42,7 +46,4 @@ public class Spell {
 
     private String availableClasses;
 
-    private String description;
-
-    private Boolean globalDatabase;
 }

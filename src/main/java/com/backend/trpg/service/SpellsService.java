@@ -15,4 +15,6 @@ public interface SpellsService {
 
 
     Iterable<Spell> getGlobalData();
+
+    Iterable<Spell> getAllData();
 }

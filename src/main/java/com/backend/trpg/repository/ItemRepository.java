@@ -15,4 +15,6 @@ public interface ItemRepository extends CrudRepository<Item, UUID> {
     Optional<Item> findByItemName(@NonNull String itemName);
     @Query("select item from Item item where item.globalDatabase = true")
     Iterable<Item> getGlobalData();
+    @Query("select item from Item item")
+    Iterable<Item> getAllData();
 }

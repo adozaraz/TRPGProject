@@ -60,6 +60,10 @@ public class Monster {
     @JoinColumn(name = "skills_prof_id")
     private SkillsProf skillsProf;
 
+    @OneToOne
+    @JoinColumn(name = "saving_throws_prof_id")
+    private SavingThrowsProf savingThrowsProf;
+
     private Integer challengeRating;
 
     private Integer masteryBonus;

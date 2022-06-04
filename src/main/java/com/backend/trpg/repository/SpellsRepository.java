@@ -15,4 +15,6 @@ public interface SpellsRepository extends CrudRepository<Spell, UUID> {
     Optional<Spell> findByName(@NonNull String name);
     @Query("select spell from Spell spell where spell.globalDatabase = true")
     Iterable<Spell> getGlobalData();
+    @Query("select spell from Spell spell")
+    Iterable<Spell> getAllData();
 }

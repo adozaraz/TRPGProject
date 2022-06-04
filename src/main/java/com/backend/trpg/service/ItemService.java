@@ -12,4 +12,6 @@ public interface ItemService {
     Item save(Item item);
 
     Iterable<Item> getGlobalData();
+
+    Iterable<Item> getAllData();
 }

@@ -26,6 +26,8 @@ public class Item {
     @JoinColumn(name = "creator_id")
     private User creator;
 
+    private String description;
+
     private String itemName;
 
     private Boolean attunementRequirement;
@@ -33,7 +35,6 @@ public class Item {
     @Builder.Default
     private Rarity rarity = Rarity.COMMON;
 
-    private String description;
 
     @Builder.Default
     private Boolean globalDatabase = true;

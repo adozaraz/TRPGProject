@@ -16,6 +16,7 @@ import {AuthGuardService} from "./security/auth-guard.service";
 import {ModalSettingsComponent} from "./components/settings/modal-settings";
 import {ModalCharacterComponent} from "./components/characterListEditor/modal-character";
 import {ModalAdminPanelComponent} from "./components/adminPanel/modal-admin";
+import {ModalCreatorComponent} from "./components/itemCreationForm/modal-creator";
 
 
 
@@ -29,7 +30,8 @@ import {ModalAdminPanelComponent} from "./components/adminPanel/modal-admin";
         ModalRegistryComponent,
         ModalSettingsComponent,
         ModalCharacterComponent,
-        ModalAdminPanelComponent
+        ModalAdminPanelComponent,
+        ModalCreatorComponent
     ],
     imports: [
         BrowserModule,

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {DatabaseService} from "../../services/database.service";
+import {UserService} from "../../services/user.service";
 
 export enum QueryItem {
     Spells,
@@ -24,7 +25,7 @@ export class DatabaseComponent implements OnInit {
     // @ts-ignore
     queryList: any[];
 
-    constructor(private route: ActivatedRoute, private databaseService: DatabaseService) {
+    constructor(private route: ActivatedRoute, private databaseService: DatabaseService, public userService: UserService) {
     }
 
 

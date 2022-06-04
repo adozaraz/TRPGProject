@@ -32,4 +32,9 @@ public class ItemServiceImpl implements ItemService {
     public Iterable<Item> getGlobalData() {
         return this.itemRepository.getGlobalData();
     }
+
+    @Override
+    public Iterable<Item> getAllData() {
+        return this.itemRepository.getAllData();
+    }
 }

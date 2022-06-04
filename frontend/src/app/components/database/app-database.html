@@ -1,10 +1,21 @@
-<div class="bg-cover flex-column d-flex">
+<div class="bg-cover flex-column d-flex just">
     <div class="inner d-flex justify-content-center">
         <span>{{this.infoString}}</span>
     </div>
-    <button *ngIf="queryItem == 3" class="btn btn-primary" [routerLink]="['/characterCreation']">Создать персонажа</button>
-    <button (click)="checkData()">Check data</button>
+    <div class="inner d-flex justify-content-center">
+        <button *ngIf="queryItem == 3" class="btn btn-primary btnParams " [routerLink]="['/characterCreation']">Создать персонажа</button>
+        <button *ngIf="queryItem != 3 && userService.currentUser != null" class="btn btn-primary btnParams" data-bs-toggle="modal" data-bs-target="#itemCreation">Создать предмет</button>
+    </div>
     <ul class="d-flex list-group mt-2 ms-2 me-2 list-inline mx-auto inner-custom align-content-center">
-        <li class="list-group-item" >Item 1</li>
+        <ul class="list-group list-group-horizontal" *ngFor="let item of queryList;">
+            <li class="list-group-item">{{item.name}}</li>
+            <li class="list-group-item">{{item.owner.username}}</li>
+            <li class="list-group-item">Карточка</li>
+        </ul>
     </ul>
+
+</div>
+
+<div class="modal fade" id="itemCreation" tabindex="-1" aria-labelledby="itemCreation" aria-hidden="true">
+    <modal-creator [itemType]="queryItem"></modal-creator>
 </div>

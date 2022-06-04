@@ -12,4 +12,6 @@ public interface MonsterService {
     Monster save(Monster monster);
 
     Iterable<Monster> getGlobalData();
+
+    Iterable<Monster> getAllData();
 }
