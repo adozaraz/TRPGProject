@@ -1,6 +1,11 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {QueryItem} from "../database/app-database";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {DatabaseService} from "../../services/database.service";
+import {Spell} from "../../models/spell.model";
+import {UserService} from "../../services/user.service";
+import {MagicItem} from "../../models/magicItem.model";
+import {Monster} from "../../models/monster.model";
 
 export enum Rarity {
     COMMON,
@@ -28,7 +33,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
     // @ts-ignore
     skillsProf: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private databaseService: DatabaseService, private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -192,4 +197,29 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
         }
     }
 
+    onSubmit() {
+        let outputData;
+        switch (this.itemType) {
+            case QueryItem.Spells:
+                outputData = new Spell(this.userService.currentUser, this.itemCreator);
+                break;
+            case QueryItem.MagicItems:
+                outputData = new MagicItem(this.userService.currentUser, this.itemCreator);
+                break;
+            case QueryItem.Bestiary:
+                outputData = new Monster(this.userService.currentUser,
+                    this.itemCreator,
+                    this.stats,
+                    this.skillsProf,
+                    this.savingThrowsProf);
+                break;
+        }
+        this.databaseService.save(this.itemType, outputData)?.subscribe((data) => {
+            console.log("Added successfully");
+        });
+        this.itemCreator.reset();
+        this.skillsProf.reset();
+        this.savingThrowsProf.reset();
+        this.stats.reset();
+    }
 }

@@ -24,19 +24,17 @@ public class Item {
 
     @OneToOne
     @JoinColumn(name = "creator_id")
-    private User creator;
+    private User owner;
 
     private String description;
 
-    private String itemName;
+    private String name;
 
     private Boolean attunementRequirement;
 
     @Builder.Default
     private Rarity rarity = Rarity.COMMON;
 
-
-    @Builder.Default
-    private Boolean globalDatabase = true;
+    private Boolean globalDatabase;
 
 }

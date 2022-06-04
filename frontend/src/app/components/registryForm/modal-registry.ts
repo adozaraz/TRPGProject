@@ -27,7 +27,6 @@ export class ModalRegistryComponent {
     }
 
     onSubmit(): void {
-        console.log(this.registryForm.get("email")?.errors);
         this.userService.signUp(new SignUpInfo(this.registryForm.get("login")?.value, this.registryForm.get("email")?.value, this.registryForm.get("password")?.value)).subscribe(() => {
             console.log("Registered successfully");
             this.userAlreadyTaken = false;

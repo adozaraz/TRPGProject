@@ -19,7 +19,7 @@ public class Monster {
 
     @OneToOne
     @JoinColumn
-    private User creator;
+    private User owner;
 
 
     private String name;
@@ -70,6 +70,5 @@ public class Monster {
 
     private String description;
 
-    @Builder.Default
-    private Boolean globalDatabase = true;
+    private Boolean globalDatabase;
 }

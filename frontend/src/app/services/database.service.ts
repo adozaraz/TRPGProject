@@ -35,4 +35,17 @@ export class DatabaseService {
         }
     }
 
+    save(type: QueryItem, data: any) {
+        switch (type) {
+            case QueryItem.Spells:
+                return this.http.post("/api/spells/save", data);
+            case QueryItem.MagicItems:
+                return this.http.post("/api/items/save", data);
+            case QueryItem.Bestiary:
+                return this.http.post("/api/monster/save", data);
+            default:
+                return null;
+        }
+    }
+
 }
