@@ -2,10 +2,10 @@ package com.backend.trpg.service;
 
 import com.backend.trpg.entities.Monster;
 import com.backend.trpg.entities.User;
-import com.backend.trpg.repository.MonsterRepository;
-import com.backend.trpg.repository.UserRepository;
+import com.backend.trpg.repository.*;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,15 @@ public class MonsterServiceImpl implements MonsterService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SkillsProfRepository skillsProfRepository;
+
+    @Autowired
+    private SavingThrowsProfRepository savingThrowsProfRepository;
+
+    @Autowired
+    private StatsRepository statsRepository;
 
     @Override
     public Optional<Monster> findById(@NonNull UUID id) {
@@ -69,5 +78,15 @@ public class MonsterServiceImpl implements MonsterService {
         monster.get().setGlobalDatabase(false);
         this.monsterRepository.save(monster.get());
         return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> remove(UUID id) {
+        Monster monster = this.monsterRepository.findById(id).get();
+        this.skillsProfRepository.deleteById(monster.getSkillsProf().getId());
+        this.savingThrowsProfRepository.deleteById(monster.getSavingThrowsProf().getId());
+        this.statsRepository.deleteById(monster.getStats().getId());
+        this.monsterRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

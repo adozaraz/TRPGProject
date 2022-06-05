@@ -211,10 +211,10 @@ export class ModalCharacterComponent implements OnInit {
                 })
             })
         } else {
-            this.statsService.save(characterList.stats).subscribe(() => {
-                this.savingThrowsProfService.save(characterList.savingThrowsProf).subscribe(() => {
-                    this.skillsProfService.save(characterList.skillsProf).subscribe(() => {
-                        this.databaseService.save(QueryItem.CharacterList, characterList)?.subscribe(() => {
+            this.statsService.save(characterList.stats).subscribe((data: any) => {
+                this.savingThrowsProfService.save(characterList.savingThrowsProf).subscribe((data: any) => {
+                    this.skillsProfService.save(characterList.skillsProf).subscribe((data: any) => {
+                        this.databaseService.save(QueryItem.CharacterList, characterList)?.subscribe((data: any) => {
                             console.log("Saved successfully");
                             this.router.navigate(['']);
                         });

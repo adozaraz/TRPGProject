@@ -60,4 +60,9 @@ public class SpellsController {
     public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
         return this.spellsService.removeFromGlobalDatabase(id);
     };
+
+    @PostMapping("/remove/{id}")
+    public ResponseEntity<?> remove(@PathVariable UUID id) {
+        return this.spellsService.remove(id);
+    }
 }

@@ -3,6 +3,8 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.CharacterList;
 import com.backend.trpg.service.CharacterListService;
 import lombok.NonNull;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -40,5 +42,10 @@ public class CharacterListController {
     @PostMapping("/update")
     public CharacterList updateCharacterList(@RequestBody CharacterList characterList) {
         return this.characterListService.updateCharacterList(characterList);
+    }
+
+    @PostMapping("/remove/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable UUID id) {
+        return this.characterListService.deleteById(id);
     }
 }

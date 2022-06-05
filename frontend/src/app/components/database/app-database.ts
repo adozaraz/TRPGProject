@@ -144,4 +144,7 @@ export class DatabaseComponent implements OnInit {
         };
     }
 
+    deleteItem(id:string, query: number) {
+        this.databaseService.remove(id, query);
+    }
 }

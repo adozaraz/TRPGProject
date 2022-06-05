@@ -105,6 +105,25 @@ export class DatabaseService {
         }
     }
 
+    remove(item: string, query: number) {
+        switch (query) {
+            case 0:
+                // @ts-ignore
+                return this.http.post(`/api/spells/remove/${item}`).subscribe();
+            case 1:
+                // @ts-ignore
+                return this.http.post(`/api/items/remove/${item}`).subscribe();
+            case 2:
+                // @ts-ignore
+                return this.http.post(`/api/monster/remove/${item}`).subscribe();
+            case 3:
+                // @ts-ignore
+                return this.http.post(`/api/characterList/remove/${item}`).subscribe();
+            default:
+                return null;
+        }
+    }
+
     updateCharacterList(characterList: CharacterList) {
         return this.http.post("/api/characterList/update", characterList);
     }

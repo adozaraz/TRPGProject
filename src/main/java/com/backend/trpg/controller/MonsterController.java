@@ -59,4 +59,9 @@ public class MonsterController {
     public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
         return this.monsterService.removeFromGlobalDatabase(id);
     }
+
+    @PostMapping("/remove/{id}")
+    public ResponseEntity<?> remove(@PathVariable UUID id) {
+        return this.monsterService.remove(id);
+    }
 }

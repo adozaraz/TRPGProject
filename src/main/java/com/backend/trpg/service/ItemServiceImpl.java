@@ -6,6 +6,7 @@ import com.backend.trpg.repository.ItemRepository;
 import com.backend.trpg.repository.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -68,6 +69,12 @@ public class ItemServiceImpl implements ItemService {
         item.get().setGlobalDatabase(false);
         this.itemRepository.save(item.get());
         return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> remove(UUID id) {
+        this.itemRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

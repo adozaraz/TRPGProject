@@ -8,6 +8,7 @@ import com.backend.trpg.security.jwt.UserPrinciple;
 import lombok.NonNull;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
@@ -70,5 +71,11 @@ public class SpellsServiceImpl implements SpellsService {
         spell.get().setGlobalDatabase(false);
         this.spellsRepository.save(spell.get());
         return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> remove(UUID id) {
+        this.spellsRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

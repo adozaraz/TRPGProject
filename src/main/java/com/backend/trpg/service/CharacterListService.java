@@ -2,6 +2,7 @@ package com.backend.trpg.service;
 
 import com.backend.trpg.entities.CharacterList;
 import lombok.NonNull;
+import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -15,4 +16,6 @@ public interface CharacterListService {
     Iterable<CharacterList> getUserCharacterLists(Principal principal);
 
     CharacterList updateCharacterList(CharacterList characterList);
+
+    ResponseEntity<?> deleteById(UUID id);
 }

@@ -49,7 +49,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
         switch (this.itemType) {
             case QueryItem.Spells:
                 this.itemCreator = this.formBuilder.group({
-                    name: new FormControl("", [Validators.requiredTrue]),
+                    name: new FormControl(""),
                     description: new FormControl(),
                     spellLevel: new FormControl(0),
                     school: new FormControl(),
@@ -208,6 +208,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
     onSubmit() {
         // @ts-ignore
         let outputData;
+        console.log(this.itemCreator);
         switch (this.itemType) {
             case QueryItem.Spells:
                 outputData = new Spell(this.userService.currentUser, this.itemCreator);
@@ -223,6 +224,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     this.savingThrowsProf);
                 break;
         }
+        console.log(outputData);
         if (this.itemType == QueryItem.Bestiary) {
             // @ts-ignore
             this.statsService.save(outputData.stats).subscribe((data) => {

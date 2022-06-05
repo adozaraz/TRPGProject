@@ -2,9 +2,6 @@ import {UserService} from "../../services/user.service";
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {DatabaseService} from "../../services/database.service";
 import {QueryItem} from "../database/app-database";
-import {Spell} from "../../models/spell.model";
-import {Monster} from "../../models/monster.model";
-import {MagicItem} from "../../models/magicItem.model";
 
 
 @Component({
@@ -60,5 +57,9 @@ export class ModalAdminPanelComponent implements OnInit {
 
     changeShowedItem(item: any) {
         this.itemToShow = item;
+    }
+
+    deleteItem(id:string, query: number) {
+        this.databaseService.remove(id, query);
     }
 }

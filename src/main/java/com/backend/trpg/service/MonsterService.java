@@ -23,4 +23,6 @@ public interface MonsterService {
     ResponseEntity<?> addToGlobalDatabase(UUID id);
 
     ResponseEntity<?> removeFromGlobalDatabase(UUID id);
+
+    ResponseEntity<?> remove(UUID id);
 }

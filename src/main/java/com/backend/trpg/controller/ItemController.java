@@ -58,4 +58,9 @@ public class ItemController {
     public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
         return this.itemService.removeFromGlobalDatabase(id);
     }
+
+    @PostMapping("/remove/{id}")
+    public ResponseEntity<?> remove(@PathVariable UUID id) {
+        return this.itemService.remove(id);
+    }
 }
