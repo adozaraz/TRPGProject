@@ -2,6 +2,7 @@ package com.backend.trpg.service;
 
 import com.backend.trpg.entities.Spell;
 import lombok.NonNull;
+import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -20,4 +21,8 @@ public interface SpellsService {
     Iterable<Spell> getAllData();
 
     Iterable<Spell> getUserData(Principal principal);
+
+    ResponseEntity<?> addToGlobalDatabase(UUID id);
+
+    ResponseEntity<?> removeFromGlobalDatabase(UUID id);
 }

@@ -9,6 +9,7 @@ export class MagicItem {
     rarity: number;
     globalDatabase: boolean;
 
+    // @ts-ignore
     constructor(owner: User, magicItemGroup: FormGroup, addToGlobalDatabase: boolean = false) {
         this.owner = owner;
         this.name = magicItemGroup.get("name")?.value;

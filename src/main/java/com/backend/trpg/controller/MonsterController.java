@@ -4,6 +4,7 @@ import com.backend.trpg.entities.Monster;
 import com.backend.trpg.service.MonsterService;
 import lombok.NonNull;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -46,5 +47,16 @@ public class MonsterController {
     @GetMapping("/list/data/user")
     public Iterable<Monster> getUserData(Principal principal) {
         return this.monsterService.getUserData(principal);
+    }
+
+    @PostMapping("/globalDatabase/add/{id}")
+    public ResponseEntity<?> addToGlobalDatabase(@PathVariable UUID id) {
+        return this.monsterService.addToGlobalDatabase(id);
+    }
+
+
+    @PostMapping("/globalDatabase/remove/{id}")
+    public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
+        return this.monsterService.removeFromGlobalDatabase(id);
     }
 }

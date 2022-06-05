@@ -6,6 +6,7 @@ import com.backend.trpg.repository.MonsterRepository;
 import com.backend.trpg.repository.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,23 @@ public class MonsterServiceImpl implements MonsterService {
     public Iterable<Monster> getUserData(Principal principal) {
         Optional<User> user = userRepository.findByUsername(principal.getName());
         return user.map(value -> this.monsterRepository.getUserData(value.getId())).orElse(null);
+    }
+
+    @Override
+    public ResponseEntity<?> addToGlobalDatabase(UUID id) {
+        Optional<Monster> monster = this.monsterRepository.findById(id);
+        if (monster.isEmpty()) return ResponseEntity.notFound().build();
+        monster.get().setGlobalDatabase(true);
+        this.monsterRepository.save(monster.get());
+        return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> removeFromGlobalDatabase(UUID id) {
+        Optional<Monster> monster = this.monsterRepository.findById(id);
+        if (monster.isEmpty()) return ResponseEntity.notFound().build();
+        monster.get().setGlobalDatabase(false);
+        this.monsterRepository.save(monster.get());
+        return ResponseEntity.ok("Changed successfully");
     }
 }

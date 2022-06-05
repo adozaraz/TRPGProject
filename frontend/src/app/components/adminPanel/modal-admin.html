@@ -1,27 +1,156 @@
 <div>
     <div class="list-group">
-        <a class="list-group-item list-group-item-action active" id="requests" data-bs-toggle="list" aria-controls="requests" href="#lRequests">Запросы на добавление в глобальную базу</a>
-        <a class="list-group-item list-group-item-action" id="spellsDb" data-bs-toggle="list" aria-controls="spellsDb" href="#lSpellsDb" (click)="loadData(0)">Заклинания</a>
+        <a class="list-group-item list-group-item-action active" id="spellsDb" data-bs-toggle="list" aria-controls="spellsDb" href="#lSpellsDb" (click)="loadData(0)">Заклинания</a>
         <a class="list-group-item list-group-item-action" id="magicItemsDb" data-bs-toggle="list" aria-controls="magicItemsDb" href="#lMagicItemsDb" (click)="loadData(1)">Магические предметы</a>
         <a class="list-group-item list-group-item-action" id="bestiaryDb" data-bs-toggle="list" aria-controls="bestiaryDb" href="#lBestiaryDb" (click)="loadData(2)">Бестиарий</a>
     </div>
     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="lRequests" role="tabpanel" aria-labelledby="requests">Тест 1</div>
-        <div class="tab-pane fade" id="lSpellsDb" role="tabpanel" aria-labelledby="spellsDb">
-            <ul class="list-group">
-                <ul class="list-group list-group-horizontal">
+        <div class="tab-pane fade show active" id="lSpellsDb" role="tabpanel" aria-labelledby="spellsDb">
+            <ul class="d-flex list-group mt-2 ms-2 me-2 align-items-center">
+                <ul class="list-group list-group-horizontal mt-1 mb-1">
                     <li class="list-group-item fw-bold">Название</li>
                     <li class="list-group-item fw-bold">Автор</li>
                     <li class="list-group-item fw-bold">Действия</li>
                 </ul>
-                <ul class="list-group list-group-horizontal" *ngFor="let item of queryList">
+                <ul class="list-group list-group-horizontal mt-1 mb-1" *ngFor="let item of queryList">
                     <li class="list-group-item">{{item.name}}</li>
                     <li class="list-group-item">{{item.owner.username}}</li>
-                    <li class="list-group-item">WIP</li>
+                    <li class="list-group-item">
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == false" (click)="addToGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Добавить в глобальную базу данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks" viewBox="0 0 16 16" >
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
+                                    <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == true" (click)="removeFromGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Убрать из глобальной базы данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"/>
+                                    <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a  data-bs-toggle="tooltip" title="Информация">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a  data-bs-toggle="tooltip" title="Удалить">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            </a>
+                        </button>
+                    </li>
                 </ul>
             </ul>
         </div>
-        <div class="tab-pane fade" id="lMagicItemsDb" role="tabpanel" aria-labelledby="magicItemsDb">Тест 3</div>
-        <div class="tab-pane fade" id="lBestiaryDb" role="tabpanel" aria-labelledby="bestiaryDb">Тест 4</div>
+        <div class="tab-pane fade" id="lMagicItemsDb" role="tabpanel" aria-labelledby="magicItemsDb">
+            <ul class="d-flex list-group mt-2 ms-2 me-2 align-items-center">
+                <ul class="list-group list-group-horizontal mt-1 mb-1">
+                    <li class="list-group-item fw-bold">Название</li>
+                    <li class="list-group-item fw-bold">Автор</li>
+                    <li class="list-group-item fw-bold">Действия</li>
+                </ul>
+                <ul class="list-group list-group-horizontal mt-1 mb-1" *ngFor="let item of queryList">
+                    <li class="list-group-item">{{item.name}}</li>
+                    <li class="list-group-item">{{item.owner.username}}</li>
+                    <li class="list-group-item">
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == false" (click)="addToGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Добавить в глобальную базу данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks" viewBox="0 0 16 16" >
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
+                                    <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == true" (click)="removeFromGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Убрать из глобальной базы данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"/>
+                                    <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a  data-bs-toggle="tooltip" title="Информация">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a data-bs-toggle="tooltip" title="Удалить">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            </a>
+                        </button>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        <div class="tab-pane fade" id="lBestiaryDb" role="tabpanel" aria-labelledby="bestiaryDb">
+            <ul class="d-flex list-group mt-2 ms-2 me-2 align-items-center">
+                <ul class="list-group list-group-horizontal mt-1 mb-1">
+                    <li class="list-group-item fw-bold">Название</li>
+                    <li class="list-group-item fw-bold">Автор</li>
+                    <li class="list-group-item fw-bold">Действия</li>
+                </ul>
+                <ul class="list-group list-group-horizontal mt-1 mb-1" *ngFor="let item of queryList">
+                    <li class="list-group-item">{{item.name}}</li>
+                    <li class="list-group-item">{{item.owner.username}}</li>
+                    <li class="list-group-item">
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == false" (click)="addToGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Добавить в глобальную базу данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks" viewBox="0 0 16 16" >
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1H4z"/>
+                                    <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn" *ngIf="item.globalDatabase == true" (click)="removeFromGlobalDatabase(item.id)">
+                            <a  data-bs-toggle="tooltip" title="Убрать из глобальной базы данных">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+                                    <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"/>
+                                    <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#information" data-bs-item="{{item}}">
+                            <a  data-bs-toggle="tooltip" title="Информация">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </a>
+                        </button>
+                        <button type="button" class="btn">
+                            <a  data-bs-toggle="tooltip" title="Удалить">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
+                            </a>
+                        </button>
+                    </li>
+                </ul>
+            </ul>
+        </div>
     </div>
 </div>
+
+<div class="modal fade" id="information" tabindex="-1" aria-labelledby="information" aria-hidden="true">
+    <modal-information [itemType]="queryNumber"></modal-information>
+</div>
+
+

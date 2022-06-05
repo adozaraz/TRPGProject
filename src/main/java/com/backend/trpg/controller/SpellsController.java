@@ -2,7 +2,9 @@ package com.backend.trpg.controller;
 
 import com.backend.trpg.entities.Spell;
 import com.backend.trpg.service.SpellsService;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.NonNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -48,4 +50,14 @@ public class SpellsController {
     public Iterable<Spell> getUserData(Principal principal) {
         return this.spellsService.getUserData(principal);
     }
+
+    @PostMapping("/globalDatabase/add/{id}")
+    public ResponseEntity<?> addToGlobalDatabase(@PathVariable UUID id) {
+        return this.spellsService.addToGlobalDatabase(id);
+    };
+
+    @PostMapping("/globalDatabase/remove/{id}")
+    public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
+        return this.spellsService.removeFromGlobalDatabase(id);
+    };
 }

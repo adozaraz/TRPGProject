@@ -1,6 +1,11 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {QueryItem} from "../components/database/app-database";
 import {Injectable} from "@angular/core";
+
+const httpOptions = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+};
+
 
 @Injectable({
     providedIn: "root",
@@ -61,4 +66,36 @@ export class DatabaseService {
         }
     }
 
+    addToGlobalDatabase(item: string, query: number) {
+        console.log(query)
+        switch (query) {
+            case 0:
+                // @ts-ignore
+                return this.http.post(`/api/spells/globalDatabase/add/${item}`).subscribe();
+            case 1:
+                // @ts-ignore
+                return this.http.post(`/api/items/globalDatabase/add/${item}`).subscribe();
+            case 2:
+                // @ts-ignore
+                return this.http.post(`/api/monster/globalDatabase/add/${item}`).subscribe();
+            default:
+                return null;
+        }
+    }
+
+    removeFromGlobalDatabase(item: string, query: number) {
+        switch (query) {
+            case 0:
+                // @ts-ignore
+                return this.http.post(`/api/spells/globalDatabase/remove/${item}`).subscribe();
+            case 1:
+                // @ts-ignore
+                return this.http.post(`/api/items/globalDatabase/remove/${item}`).subscribe();
+            case 2:
+                // @ts-ignore
+                return this.http.post(`/api/monster/globalDatabase/remove/${item}`).subscribe();
+            default:
+                return null;
+        }
+    }
 }

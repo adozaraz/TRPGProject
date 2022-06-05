@@ -8,6 +8,7 @@ import com.backend.trpg.security.jwt.UserPrinciple;
 import lombok.NonNull;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +52,23 @@ public class SpellsServiceImpl implements SpellsService {
     public Iterable<Spell> getUserData(Principal principal) {
         Optional<User> user = userRepository.findByUsername(principal.getName());
         return user.map(value -> this.spellsRepository.getUserData(value.getId())).orElse(null);
+    }
+
+    @Override
+    public ResponseEntity<?> addToGlobalDatabase(UUID id) {
+        Optional<Spell> spell = this.spellsRepository.findById(id);
+        if (spell.isEmpty()) return ResponseEntity.notFound().build();
+        spell.get().setGlobalDatabase(true);
+        this.spellsRepository.save(spell.get());
+        return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> removeFromGlobalDatabase(UUID id) {
+        Optional<Spell> spell = this.spellsRepository.findById(id);
+        if (spell.isEmpty()) return ResponseEntity.notFound().build();
+        spell.get().setGlobalDatabase(false);
+        this.spellsRepository.save(spell.get());
+        return ResponseEntity.ok("Changed successfully");
     }
 }

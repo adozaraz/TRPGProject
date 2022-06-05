@@ -17,6 +17,7 @@ import {ModalSettingsComponent} from "./components/settings/modal-settings";
 import {ModalCharacterComponent} from "./components/characterListEditor/modal-character";
 import {ModalAdminPanelComponent} from "./components/adminPanel/modal-admin";
 import {ModalCreatorComponent} from "./components/itemCreationForm/modal-creator";
+import {ModalInformation} from "./components/informationWindow/modal-information";
 
 
 
@@ -31,7 +32,8 @@ import {ModalCreatorComponent} from "./components/itemCreationForm/modal-creator
         ModalSettingsComponent,
         ModalCharacterComponent,
         ModalAdminPanelComponent,
-        ModalCreatorComponent
+        ModalCreatorComponent,
+        ModalInformation
     ],
     imports: [
         BrowserModule,

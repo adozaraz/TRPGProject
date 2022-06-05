@@ -4,7 +4,7 @@
     </div>
     <div class="inner d-flex justify-content-center">
         <button *ngIf="queryItem == 3" class="btn btn-primary btnParams " [routerLink]="['/characterCreation']">Создать персонажа</button>
-        <button *ngIf="queryItem != 3 && userService.currentUser != null" class="btn btn-primary btnParams" data-bs-toggle="modal" data-bs-target="#itemCreation">Создать предмет</button>
+        <button *ngIf="(queryItem == 0 || queryItem == 1 || queryItem == 2) && userService.currentUser != null" class="btn btn-primary btnParams" data-bs-toggle="modal" data-bs-target="#itemCreation">Создать предмет</button>
     </div>
     <ul class="d-flex list-group mt-2 ms-2 me-2 inner-custom align-items-center">
         <ul class="list-group list-group-horizontal mt-1 mb-1">

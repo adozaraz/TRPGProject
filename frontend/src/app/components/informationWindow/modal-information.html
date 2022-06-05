@@ -1,0 +1,58 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">
+                <h3><b>{{itemToShow.name}}</b></h3>
+                <span *ngIf="itemType==0 && itemToShow.level != 0"><i>{{itemToShow.level}} уровень, {{itemToShow.school}}</i></span>
+                <span *ngIf="itemType==0 && itemToShow.level == 0"><i>Заговор, {{itemToShow.school}}</i></span>
+                <span *ngIf="itemType==1"><i>{{showRarity(itemToShow.rarity)}}</i></span>
+                <span *ngIf="itemType==2"><i>{{showSize(itemToShow.size)}} {{itemToShow.race}}</i></span>
+            </div>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+<!--       Заклинания     -->
+            <span *ngIf="itemType==0"><b>Время накладывания</b>: {{itemToShow.actionTime}}</span>
+            <span *ngIf="itemType==0"><b>Дистанция</b>: {{itemToShow.distance}}</span>
+            <span *ngIf="itemType==0"><b>Компоненты</b>: <a *ngIf="itemToShow.verbalComp == true">В</a>
+            <a *ngIf="itemToShow.somaticComp == true">С</a><a *ngIf="itemToShow.materialComp == true">М</a></span>
+            <span *ngIf="itemType==0 && itemToShow.materialComp == true"><b>Материалы для заклинания</b>: {{itemToShow.material}}</span>
+            <span *ngIf="itemType == 1 && itemToShow.attunementRequired == true">Требуется настройка на данный предмет</span>
+            <div *ngIf="itemType==2">
+                <ul class="list-group list-group-horizontal">
+                    <li class="statsBlock list-group-item">
+                        <h3><b>СИЛ</b></h3>
+                        <span>{{itemToShow.stats.strength}}</span>
+                    </li>
+                    <li class="statsBlock list-group-item">
+                        <h3><b>ЛОВ</b></h3>
+                        <span>{{itemToShow.stats.dexterity}}</span>
+                    </li>
+                    <li class="statsBlock list-group-item">
+                        <h3><b>ТЕЛ</b></h3>
+                        <span>{{itemToShow.stats.constitution}}</span>
+                    </li>
+                    <li class="statsBlock list-group-item">
+                        <h3><b>ИНТ</b></h3>
+                        <span>{{itemToShow.stats.intelligence}}</span>
+                    </li>
+                    <li class="statsBlock list-group-item">
+                        <h3><b>МДР</b></h3>
+                        <span>{{itemToShow.stats.wisdom}}</span>
+                    </li>
+                    <li class="statsBlock list-group-item">
+                        <h3><b>ХАР</b></h3>
+                        <span>{{itemToShow.stats.charisma}}</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <h5>Описание</h5>
+            <span>{{itemToShow.description}}</span>
+        </div>
+    </div>
+</div>

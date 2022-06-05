@@ -6,6 +6,7 @@ import com.backend.trpg.repository.ItemRepository;
 import com.backend.trpg.repository.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,24 @@ public class ItemServiceImpl implements ItemService {
     public Iterable<Item> getUserData(Principal principal) {
         Optional<User> user = this.userRepository.findByUsername(principal.getName());
         return user.map(value -> this.itemRepository.getUserData(value.getId())).orElse(null);
+    }
+
+    @Override
+    public ResponseEntity<?> addToGlobalDatabase(UUID id) {
+        Optional<Item> item = this.itemRepository.findById(id);
+        if (item.isEmpty()) return ResponseEntity.notFound().build();
+        item.get().setGlobalDatabase(true);
+        this.itemRepository.save(item.get());
+        return ResponseEntity.ok("Changed successfully");
+    }
+
+    @Override
+    public ResponseEntity<?> removeFromGlobalDatabase(UUID id) {
+        Optional<Item> item = this.itemRepository.findById(id);
+        if (item.isEmpty()) return ResponseEntity.notFound().build();
+        item.get().setGlobalDatabase(false);
+        this.itemRepository.save(item.get());
+        return ResponseEntity.ok("Changed successfully");
     }
 
 

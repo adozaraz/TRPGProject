@@ -3,6 +3,7 @@ package com.backend.trpg.controller;
 import com.backend.trpg.entities.Item;
 import com.backend.trpg.service.ItemService;
 import lombok.NonNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -46,5 +47,15 @@ public class ItemController {
     @GetMapping("/list/data/user")
     public Iterable<Item> getUserData(Principal principal) {
         return this.itemService.getUserData(principal);
+    }
+
+    @PostMapping("/globalDatabase/add/{id}")
+    public ResponseEntity<?> addToGlobalDatabase(@PathVariable UUID id) {
+        return this.itemService.addToGlobalDatabase(id);
+    }
+
+    @PostMapping("/globalDatabase/remove/{id}")
+    public ResponseEntity<?> removeFromGlobalDatabase(@PathVariable UUID id) {
+        return this.itemService.removeFromGlobalDatabase(id);
     }
 }
