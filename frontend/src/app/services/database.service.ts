@@ -74,7 +74,6 @@ export class DatabaseService {
     }
 
     addToGlobalDatabase(item: string, query: number) {
-        console.log(query)
         switch (query) {
             case 0:
                 // @ts-ignore
