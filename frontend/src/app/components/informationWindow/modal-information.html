@@ -2,57 +2,90 @@
     <div class="modal-content">
         <div class="modal-header">
             <div class="modal-title">
-                <h3><b>{{itemToShow.name}}</b></h3>
-                <span *ngIf="itemType==0 && itemToShow.level != 0"><i>{{itemToShow.level}} уровень, {{itemToShow.school}}</i></span>
-                <span *ngIf="itemType==0 && itemToShow.level == 0"><i>Заговор, {{itemToShow.school}}</i></span>
-                <span *ngIf="itemType==1"><i>{{showRarity(itemToShow.rarity)}}</i></span>
-                <span *ngIf="itemType==2"><i>{{showSize(itemToShow.size)}} {{itemToShow.race}}</i></span>
+                <h3 *ngIf="itemToShow != null"><b>{{itemToShow.name}}</b></h3>
+                <span *ngIf="itemToShow != null && itemType==0 && itemToShow.level != 0"><i>{{itemToShow.level}} уровень, {{itemToShow.school}}</i></span>
+                <span *ngIf="itemToShow != null && itemType==0 && itemToShow.level == 0"><i>Заговор, {{itemToShow.school}}</i></span>
+                <span *ngIf="itemToShow != null && itemType==1"><i>{{showRarity(itemToShow.rarity)}}</i></span>
+                <span *ngIf="itemToShow != null && itemType==2"><i>{{showSize(itemToShow.size)}} {{itemToShow.race}}, {{showAlignment(itemToShow.alignment)}}</i></span>
             </div>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-<!--       Заклинания     -->
-            <span *ngIf="itemType==0"><b>Время накладывания</b>: {{itemToShow.actionTime}}</span>
-            <span *ngIf="itemType==0"><b>Дистанция</b>: {{itemToShow.distance}}</span>
-            <span *ngIf="itemType==0"><b>Компоненты</b>: <a *ngIf="itemToShow.verbalComp == true">В</a>
-            <a *ngIf="itemToShow.somaticComp == true">С</a><a *ngIf="itemToShow.materialComp == true">М</a></span>
-            <span *ngIf="itemType==0 && itemToShow.materialComp == true"><b>Материалы для заклинания</b>: {{itemToShow.material}}</span>
-            <span *ngIf="itemType == 1 && itemToShow.attunementRequired == true">Требуется настройка на данный предмет</span>
-            <div *ngIf="itemType==2">
+        <div class="modal-body forceBlock">
+            <span *ngIf="itemToShow != null && itemType==0"><b>Время накладывания</b>: {{itemToShow.actionTime}}</span>
+            <span *ngIf="itemToShow != null && itemType==0"><b>Дистанция</b>: {{itemToShow.distance}}</span>
+            <span *ngIf="itemToShow != null && itemType==0"><b>Компоненты</b>: <a *ngIf="itemToShow != null && itemToShow.verbalComp == true">В</a>
+            <a *ngIf="itemToShow != null && itemToShow.somaticComp == true">С</a><a *ngIf="itemToShow != null && itemToShow.materialComp == true">М</a></span>
+            <span *ngIf="itemToShow != null && itemType==0 && itemToShow.materialComp == true"><b>Материалы для заклинания</b>: {{itemToShow.material}}</span>
+            <span *ngIf="itemToShow != null && itemType == 1 && itemToShow.attunementRequirement == true">Требуется настройка на данный предмет</span>
+            <span *ngIf="itemToShow != null && itemType==2"><b>Класс защиты: </b> {{itemToShow.armorClass}}</span>
+            <span *ngIf="itemToShow != null && itemType==2"><b>Количество жизней: </b> {{itemToShow.hitPoints}}</span>
+            <span *ngIf="itemToShow != null && itemType==2"><b>Скорость: </b> {{itemToShow.speed}}</span>
+            <span *ngIf="itemToShow != null && itemType==2"><b>Уровень опасности: </b> {{itemToShow.challengeRating}}</span>
+            <span *ngIf="itemToShow != null && itemType==2"><b>Бонус мастерства: </b> {{itemToShow.masteryBonus}}</span>
+            <div *ngIf="itemToShow != null && itemType==2">
                 <ul class="list-group list-group-horizontal">
                     <li class="statsBlock list-group-item">
-                        <h3><b>СИЛ</b></h3>
+                        <h5><b>СИЛ</b></h5>
                         <span>{{itemToShow.stats.strength}}</span>
                     </li>
                     <li class="statsBlock list-group-item">
-                        <h3><b>ЛОВ</b></h3>
+                        <h5><b>ЛОВ</b></h5>
                         <span>{{itemToShow.stats.dexterity}}</span>
                     </li>
                     <li class="statsBlock list-group-item">
-                        <h3><b>ТЕЛ</b></h3>
+                        <h5><b>ТЕЛ</b></h5>
                         <span>{{itemToShow.stats.constitution}}</span>
                     </li>
                     <li class="statsBlock list-group-item">
-                        <h3><b>ИНТ</b></h3>
+                        <h5><b>ИНТ</b></h5>
                         <span>{{itemToShow.stats.intelligence}}</span>
                     </li>
                     <li class="statsBlock list-group-item">
-                        <h3><b>МДР</b></h3>
+                        <h5><b>МДР</b></h5>
                         <span>{{itemToShow.stats.wisdom}}</span>
                     </li>
                     <li class="statsBlock list-group-item">
-                        <h3><b>ХАР</b></h3>
+                        <h5><b>ХАР</b></h5>
                         <span>{{itemToShow.stats.charisma}}</span>
                     </li>
                 </ul>
             </div>
-
+            <div *ngIf="itemToShow != null && itemType == 2">
+                <h4><b>Владение спасбросками</b></h4>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.strength == true">Сила</span>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.dexterity == true">Ловкость</span>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.constitution == true">Телосложение</span>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.intelligence == true">Интеллект</span>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.wisdom == true">Мудрость</span>
+                <span *ngIf="itemToShow != null && itemToShow.skillsProf.charisma == true">Харизма</span>
+            </div>
+            <div *ngIf="itemToShow != null && itemType == 2">
+                <h4><b>Владение навыками</b></h4>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.athletics == true">Атлетика</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.acrobatics == true">Акробатика</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.sleightOfHands == true">Ловкость рук</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.stealth == true">Скрытность</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.arcana == true">Магия</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.history == true">История</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.investigation == true">Анализ</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.nature == true">Природа</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.religion == true">Религия</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.animalHandling == true">Уход за животными</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.insight == true">Проницательность</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.medicine == true">Медицина</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.perception == true">Внимательность</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.survival == true">Выживание</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.deception == true">Обман</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.intimidation == true">Запугивание</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.performance == true">Выступление</span>
+                <span *ngIf="itemToShow != null && itemToShow.savingThrowsProf.persuasion == true">Убеждение</span>
+            </div>
         </div>
         <div class="modal-footer">
             <h5>Описание</h5>
-            <span>{{itemToShow.description}}</span>
+            <span *ngIf="itemToShow != null">{{itemToShow.description}}</span>
         </div>
     </div>
 </div>

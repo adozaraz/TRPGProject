@@ -214,7 +214,7 @@
                     </div>
                 </div>
             </div>
-            <div>Владение спасбросками</div>
+            <div *ngIf="itemType == 2">Владение спасбросками</div>
             <form role="form" [formGroup]="savingThrowsProf" *ngIf="itemType == 2">
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="strengthSave" formControlName="strength">
@@ -241,7 +241,7 @@
                     <label for="charismaSave" class="form-check-label ms-2">Харизмы</label>
                 </div>
             </form>
-            <div>Навыки</div>
+            <div *ngIf="itemType == 2">Навыки</div>
             <form role="form" [formGroup]="skillsProf" *ngIf="itemType == 2">
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="athletics" formControlName="athletics">

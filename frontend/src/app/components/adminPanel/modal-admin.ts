@@ -1,5 +1,5 @@
 import {UserService} from "../../services/user.service";
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {DatabaseService} from "../../services/database.service";
 import {QueryItem} from "../database/app-database";
 import {Spell} from "../../models/spell.model";
@@ -15,20 +15,15 @@ import {MagicItem} from "../../models/magicItem.model";
 export class ModalAdminPanelComponent implements OnInit {
     queryList: any[] = [];
     queryNumber: number = 0;
+    itemToShow: any;
+    @ViewChild("information") modalWindow: any;
 
     constructor(private userService: UserService,
-                private databaseService: DatabaseService,
-                private elementRef: ElementRef) {
+                private databaseService: DatabaseService) {
     }
 
     ngOnInit(): void {
         this.loadData(this.queryNumber);
-        let element = this.elementRef.nativeElement.getElementById('information');
-        element.addEventListener('show.bs.modal', function handleEvent(event: any) {
-            let argument = event.relatedTarget.getAttribute('data-bs-item');
-            const informationModal = element.querySelector('.information');
-            informationModal.setAttribute("[itemToShow]", argument);
-        })
     }
 
     loadData(query: number) {
@@ -61,5 +56,9 @@ export class ModalAdminPanelComponent implements OnInit {
 
     removeFromGlobalDatabase(id: string) {
         this.databaseService.removeFromGlobalDatabase(id, this.queryNumber);
+    }
+
+    changeShowedItem(item: any) {
+        this.itemToShow = item;
     }
 }

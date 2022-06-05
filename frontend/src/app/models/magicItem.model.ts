@@ -14,7 +14,7 @@ export class MagicItem {
         this.owner = owner;
         this.name = magicItemGroup.get("name")?.value;
         this.description = magicItemGroup.get("description")?.value;
-        this.attunementRequirement = magicItemGroup.get("attunementRequirement")?.value;
+        this.attunementRequirement = magicItemGroup.get("attunementRequired")?.value;
         this.rarity = magicItemGroup.get("rarity")?.value;
         this.globalDatabase = addToGlobalDatabase;
     }

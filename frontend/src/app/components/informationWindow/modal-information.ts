@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {AfterViewInit, Component, Input} from "@angular/core";
 
 @Component({
     selector: 'modal-information',
@@ -13,27 +13,42 @@ export class ModalInformation {
     constructor() {
     }
 
-    showRarity(itemRarity: number) {
+    showRarity(itemRarity: string) {
         switch (itemRarity) {
-            case 0: return "Обычный";
-            case 1: return "Необычный";
-            case 2: return "Редкий";
-            case 3: return "Очень редкий";
-            case 4: return "Легендарный";
-            case 5: return "Артифакт";
+            case "COMMON": return "Обычный";
+            case "UNCOMMON": return "Необычный";
+            case "RARE": return "Редкий";
+            case "VERY_RARE": return "Очень редкий";
+            case "LEGENDARY": return "Легендарный";
+            case "ARTIFACT": return "Артифакт";
             default: return "Ошибка"
         }
     }
 
-    showSize(itemSize: number) {
+    showSize(itemSize: string) {
         switch (itemSize) {
-            case 0: return "Крошечный";
-            case 1: return "Маленький";
-            case 2: return "Средний";
-            case 3: return "Большой";
-            case 4: return "Огромный";
-            case 5: return "Громадный";
+            case "TINY": return "Крошечный";
+            case "SMALL": return "Маленький";
+            case "MEDIUM": return "Средний";
+            case "LARGE": return "Большой";
+            case "HUGE": return "Огромный";
+            case "GARGANTUAN": return "Громадный";
             default: return "Ошибка"
+        }
+    }
+
+    showAlignment(alignment: string) {
+        switch (alignment) {
+            case "LAWFUL_GOOD": return "Законно-добрый";
+            case "LAWFUL_NEUTRAL": return "Законно-нейтральный";
+            case "LAWFUL_EVIL": return "Законно-злой";
+            case "NEUTRAL_GOOD": return "Нейтрально-добрый";
+            case "TRUE_NEUTRAL": return "Нейтральный";
+            case "NEUTRAL_EVIL": return "Нейтрально-злой";
+            case "CHAOTIC_GOOD": return "Хаотично-добрый";
+            case "CHAOTIC_NEUTRAL": return "Хаотично-нейтральный";
+            case "CHAOTIC_EVIL": return "Хаотично-злой";
+            default: return "Ошибка";
         }
     }
 }

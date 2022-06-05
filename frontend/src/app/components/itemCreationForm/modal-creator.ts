@@ -91,32 +91,32 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     charisma: new FormControl(1)
                 });
                 this.skillsProf = this.formBuilder.group({
-                    athletics: false,
-                    acrobatics: false,
-                    sleightOfHands: false,
-                    stealth: false,
-                    arcana: false,
-                    history: false,
-                    investigation: false,
-                    nature: false,
-                    religion: false,
-                    animalHandling: false,
-                    insight: false,
-                    medicine: false,
-                    perception: false,
-                    survival: false,
-                    deception: false,
-                    intimidation: false,
-                    performance: false,
-                    persuasion: false
+                    athletics: new FormControl(false),
+                    acrobatics: new FormControl(false),
+                    sleightOfHands: new FormControl(false),
+                    stealth: new FormControl(false),
+                    arcana: new FormControl(false),
+                    history: new FormControl(false),
+                    investigation: new FormControl(false),
+                    nature: new FormControl(false),
+                    religion: new FormControl(false),
+                    animalHandling: new FormControl(false),
+                    insight: new FormControl(false),
+                    medicine: new FormControl(false),
+                    perception: new FormControl(false),
+                    survival: new FormControl(false),
+                    deception: new FormControl(false),
+                    intimidation: new FormControl(false),
+                    performance: new FormControl(false),
+                    persuasion: new FormControl(false)
                 });
                 this.savingThrowsProf = this.formBuilder.group({
-                    strength: false,
-                    dexterity: false,
-                    constitution: false,
-                    intelligence: false,
-                    wisdom: false,
-                    charisma: false
+                    strength: new FormControl(false),
+                    dexterity: new FormControl(false),
+                    constitution: new FormControl(false),
+                    intelligence: new FormControl(false),
+                    wisdom: new FormControl(false),
+                    charisma: new FormControl(false)
                 });
                 break;
             default:
@@ -223,6 +223,7 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     this.savingThrowsProf);
                 break;
         }
+        console.log(outputData);
         if (this.itemType == QueryItem.Bestiary) {
             // @ts-ignore
             this.statsService.save(outputData.stats).subscribe((data) => {

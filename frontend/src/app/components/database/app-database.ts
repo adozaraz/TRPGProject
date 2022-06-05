@@ -24,6 +24,7 @@ export class DatabaseComponent implements OnInit {
     infoString: string = "Бестиарий"
     // @ts-ignore
     queryList: any[];
+    itemToShow: any;
 
     constructor(private route: ActivatedRoute, private databaseService: DatabaseService, public userService: UserService) {
     }
@@ -84,4 +85,7 @@ export class DatabaseComponent implements OnInit {
         console.log(this.queryList);
     }
 
+    changeShowedItem(item: any) {
+        this.itemToShow = item;
+    }
 }

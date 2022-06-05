@@ -39,8 +39,8 @@ export class Monster {
         this.masteryBonus = monsterGroup.get("masteryBonus")?.value;
         this.description = monsterGroup.get("description")?.value;
         this.stats = new Stats(statsGroup);
-        this.skillsProf = new SkillsProf(skillsProfGroup);
-        this.savingThrowsProf = new SavingThrowsProf(savingThrowsGroup);
+        this.skillsProf = new SkillsProf(savingThrowsGroup);
+        this.savingThrowsProf = new SavingThrowsProf(skillsProfGroup);
         this.globalDatabase = addToGlobalDatabase;
     }
 }
