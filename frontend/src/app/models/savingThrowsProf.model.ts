@@ -1,6 +1,7 @@
 import {FormGroup} from "@angular/forms";
 
 export class SavingThrowsProf {
+    id: string;
     athletics: boolean;
     acrobatics: boolean;
     sleightOfHands: boolean;
@@ -20,7 +21,8 @@ export class SavingThrowsProf {
     performance: boolean;
     persuasion: boolean;
 
-    constructor(savingThrowsGroup: FormGroup) {
+    // @ts-ignore
+    constructor(savingThrowsGroup: FormGroup, id: string = null) {
         this.athletics = savingThrowsGroup.get("athletics")?.value;
         this.acrobatics = savingThrowsGroup.get("acrobatics")?.value;
         this.sleightOfHands = savingThrowsGroup.get("sleightOfHands")?.value;
@@ -39,5 +41,6 @@ export class SavingThrowsProf {
         this.intimidation = savingThrowsGroup.get("intimidation")?.value;
         this.performance = savingThrowsGroup.get("performance")?.value;
         this.persuasion = savingThrowsGroup.get("persuasion")?.value;
+        this.id = id;
     }
 }

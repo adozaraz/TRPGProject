@@ -22,4 +22,9 @@ public class SkillsProfServiceImpl implements SkillsProfService {
     public SkillsProf save(SkillsProf skillsProf) {
         return this.skillsProfRepository.save(skillsProf);
     }
+
+    @Override
+    public SkillsProf updateSkillsProf(SkillsProf skillsProf) {
+        return this.save(skillsProf);
+    }
 }

@@ -25,4 +25,9 @@ public class SkillsProfController {
     public SkillsProf save(@RequestBody SkillsProf skillsProf) {
         return this.skillsProfService.save(skillsProf);
     }
+
+    @PostMapping("/update")
+    public SkillsProf updateSkillsProf(@RequestBody SkillsProf skillsProf) {
+        return this.skillsProfService.updateSkillsProf(skillsProf);
+    }
 }

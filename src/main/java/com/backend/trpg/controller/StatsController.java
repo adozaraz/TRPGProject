@@ -25,4 +25,7 @@ public class StatsController {
     public Stats save(@RequestBody Stats stats) {
         return this.statsService.save(stats);
     }
+
+    @PostMapping("/update")
+    public Stats updateStats(@RequestBody Stats stats) { return this.statsService.update(stats); }
 }

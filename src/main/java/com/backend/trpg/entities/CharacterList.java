@@ -31,23 +31,25 @@ public class CharacterList {
 
     private Integer speed;
 
-    private Integer proficiencyBonus;
+    private Integer charLevel;
 
-    private Boolean inspiration;
+    private Integer armorClass;
+
+    private Integer proficiencyBonus;
 
     private Integer maxHitPoints;
 
     private Integer curHitPoints;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stats_id")
     private Stats stats;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "saving_throws_prof_id")
     private SavingThrowsProf savingThrowsProf;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "skills_prof_id")
     private SkillsProf skillsProf;
 }

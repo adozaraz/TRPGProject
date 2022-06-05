@@ -1,6 +1,7 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {QueryItem} from "../components/database/app-database";
 import {Injectable} from "@angular/core";
+import {CharacterList} from "../models/characterList.model";
 
 const httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -25,6 +26,10 @@ export class DatabaseService {
             default:
                 return null;
         }
+    }
+
+    getUserCharacterLists() {
+        return this.http.get("/api/characterList/list/data/user");
     }
 
     getUserCreatedData(type: QueryItem) {
@@ -61,6 +66,8 @@ export class DatabaseService {
                 return this.http.post("/api/items/save", data);
             case QueryItem.Bestiary:
                 return this.http.post("/api/monster/save", data);
+            case QueryItem.CharacterList:
+                return this.http.post("/api/characterList/save", data);
             default:
                 return null;
         }
@@ -97,5 +104,9 @@ export class DatabaseService {
             default:
                 return null;
         }
+    }
+
+    updateCharacterList(characterList: CharacterList) {
+        return this.http.post("/api/characterList/update", characterList);
     }
 }

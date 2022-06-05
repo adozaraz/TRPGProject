@@ -12,4 +12,8 @@ export class SavingThrowsProfService {
     save(savingThrowsProf: SavingThrowsProf) {
         return this.http.post("api/savingThrowsProf/save", savingThrowsProf);
     }
+
+    updateSavingThrowsProf(savingThrowsProf: SavingThrowsProf) {
+        return this.http.post("api/savingThrowsProf/update", savingThrowsProf);
+    }
 }

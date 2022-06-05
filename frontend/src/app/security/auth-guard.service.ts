@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate {
             this.userService.loadCurrentUserData(this.token.getUsername());
             return true;
         }
-        this.router.navigate([""])
+        this.router.navigate([""]);
         return false;
     }
 

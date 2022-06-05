@@ -77,6 +77,12 @@ export class DatabaseComponent implements OnInit {
                         this.queryList = data;
                     });
                     break;
+                case QueryItem.CharacterList:
+                    // @ts-ignore
+                    this.databaseService.getUserCharacterLists().subscribe((data: any[]) => {
+                        console.log(data);
+                        this.queryList = data;
+                    })
             }
         })
     }
@@ -88,4 +94,54 @@ export class DatabaseComponent implements OnInit {
     changeShowedItem(item: any) {
         this.itemToShow = item;
     }
+
+    createParams(item: any) {
+        return {
+            saveThrowId: item.savingThrowsProf.id,
+            statsId: item.stats.id,
+            skillId: item.skillsProf.id,
+            characterList: true,
+            name: item.name,
+            charClass: item.charClass,
+            race: item.race,
+            charLevel: item.charLevel,
+            alignment: item.alignment,
+            speed: item.speed,
+            armorClass: item.armorClass,
+            proficiencyBonus: item.proficiencyBonus,
+            maxHitPoints: item.maxHitPoints,
+            curHitPoints: item.curHitPoints,
+            statsStrength: item.stats.strength,
+            statsDexterity: item.stats.dexterity,
+            statsConstitution: item.stats.constitution,
+            statsIntelligence: item.stats.intelligence,
+            statsWisdom: item.stats.wisdom,
+            statsCharisma: item.stats.charisma,
+            skillsProfAthletics: item.savingThrowsProf.athletics,
+            skillsProfAcrobatics: item.savingThrowsProf.acrobatics,
+            skillsProfSleightOfHands: item.savingThrowsProf.sleightOfHands,
+            skillsProfStealth: item.savingThrowsProf.stealth,
+            skillsProfArcana: item.savingThrowsProf.arcana,
+            skillsProfHistory: item.savingThrowsProf.history,
+            skillsProfInvestigation: item.savingThrowsProf.investigation,
+            skillsProfNature: item.savingThrowsProf.nature,
+            skillsProfReligion: item.savingThrowsProf.religion,
+            skillsProfAnimalHandling: item.savingThrowsProf.animalHandling,
+            skillsProfInsight: item.savingThrowsProf.insight,
+            skillsProfMedicine: item.savingThrowsProf.medicine,
+            skillsProfPerception: item.savingThrowsProf.perception,
+            skillsProfSurvival: item.savingThrowsProf.survival,
+            skillsProfDeception: item.savingThrowsProf.deception,
+            skillsProfIntimidation: item.savingThrowsProf.intimidation,
+            skillsProfPerformance: item.savingThrowsProf.performance,
+            skillsProfPersuasion: item.savingThrowsProf.persuasion,
+            savingThrowsProfStrength: item.skillsProf.strength,
+            savingThrowsProfDexterity: item.skillsProf.dexterity,
+            savingThrowsProfConstitution: item.skillsProf.constitution,
+            savingThrowsProfIntelligence: item.skillsProf.intelligence,
+            savingThrowsProfWisdom: item.skillsProf.wisdom,
+            savingThrowsProfCharisma: item.skillsProf.charisma
+        };
+    }
+
 }

@@ -22,4 +22,9 @@ public class StatsServiceImpl implements StatsService {
     public Stats save(Stats stats) {
         return this.statsRepository.save(stats);
     }
+
+    @Override
+    public Stats update(Stats stats) {
+        return this.statsRepository.save(stats);
+    }
 }

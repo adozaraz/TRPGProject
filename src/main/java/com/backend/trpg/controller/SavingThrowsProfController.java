@@ -25,4 +25,9 @@ public class SavingThrowsProfController {
     public SavingThrowsProf save(@RequestBody SavingThrowsProf savingThrowsProf) {
         return this.savingThrowsProfService.save(savingThrowsProf);
     }
+
+    @PostMapping("/update")
+    public SavingThrowsProf updateSavingThrows(@RequestBody SavingThrowsProf savingThrowsProf) {
+        return this.savingThrowsProfService.updateSavingThrows(savingThrowsProf);
+    }
 }

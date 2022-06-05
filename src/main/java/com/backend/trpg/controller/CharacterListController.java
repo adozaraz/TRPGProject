@@ -5,6 +5,7 @@ import com.backend.trpg.service.CharacterListService;
 import lombok.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,5 +30,15 @@ public class CharacterListController {
     @PostMapping("/save")
     public CharacterList save(@RequestBody CharacterList characterList) {
         return this.characterListService.save(characterList);
+    }
+
+    @GetMapping("/list/data/user")
+    public Iterable<CharacterList> getUserCharacterLists(Principal principal) {
+        return this.characterListService.getUserCharacterLists(principal);
+    }
+
+    @PostMapping("/update")
+    public CharacterList updateCharacterList(@RequestBody CharacterList characterList) {
+        return this.characterListService.updateCharacterList(characterList);
     }
 }

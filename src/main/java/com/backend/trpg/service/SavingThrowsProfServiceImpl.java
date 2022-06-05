@@ -22,4 +22,9 @@ public class SavingThrowsProfServiceImpl implements SavingThrowsProfService {
     public SavingThrowsProf save(SavingThrowsProf savingThrowsProf) {
         return this.savingThrowsProfRepository.save(savingThrowsProf);
     }
+
+    @Override
+    public SavingThrowsProf updateSavingThrows(SavingThrowsProf savingThrowsProf) {
+        return this.savingThrowsProfRepository.save(savingThrowsProf);
+    }
 }

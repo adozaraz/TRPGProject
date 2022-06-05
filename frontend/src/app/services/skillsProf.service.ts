@@ -12,4 +12,8 @@ export class SkillsProfService {
     save(skillsProf: SkillsProf) {
         return this.http.post("api/skillsProf/save", skillsProf);
     }
+
+    updateSkillsProf(skillsProf: SkillsProf) {
+        return this.http.post("api/skillsProf/update", skillsProf);
+    }
 }

@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface SkillsProfService {
     Optional<SkillsProf> findById(@NonNull UUID id);
     SkillsProf save(SkillsProf skillsProf);
+
+    SkillsProf updateSkillsProf(SkillsProf skillsProf);
 }

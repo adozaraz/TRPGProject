@@ -223,7 +223,6 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     this.savingThrowsProf);
                 break;
         }
-        console.log(outputData);
         if (this.itemType == QueryItem.Bestiary) {
             // @ts-ignore
             this.statsService.save(outputData.stats).subscribe((data) => {

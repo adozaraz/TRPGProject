@@ -9,4 +9,6 @@ import java.util.UUID;
 public interface SavingThrowsProfService {
     Optional<SavingThrowsProf> findById(@NonNull UUID id);
     SavingThrowsProf save(SavingThrowsProf savingThrowsProf);
+
+    SavingThrowsProf updateSavingThrows(SavingThrowsProf savingThrowsProf);
 }

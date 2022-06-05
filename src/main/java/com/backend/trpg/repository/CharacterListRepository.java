@@ -13,4 +13,10 @@ import java.util.UUID;
 public interface CharacterListRepository extends CrudRepository<CharacterList, UUID> {
     @Query("select characterList from CharacterList characterList where characterList.name = :name")
     Optional<CharacterList> findByName(@NonNull String name);
+
+    @Query("select characterList from CharacterList characterList where characterList.owner.id = :id")
+    Iterable<CharacterList> getUserCharacterLists(UUID id);
+
+    @Query("select characterList from CharacterList characterList where characterList.owner.id = :id and characterList.name = :name")
+    Optional<CharacterList> findByOwnerAndName(UUID id, String name);
 }

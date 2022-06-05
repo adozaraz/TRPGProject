@@ -67,147 +67,158 @@
             <form role="form" [formGroup]="skillsProf">
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="athletics" formControlName="athletics">
-                    <label for="athletics" class="form-check-label ms-2">{{calculateModificator(this.stats.get("strength")?.value)}}</label>
+                    <label for="athletics" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("strength")?.value, this.skillsProf.get("athletics")?.value)}}</label>
                     <label for="athletics" class="form-check-label ms-2">Атлетика</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="acrobatics" formControlName="acrobatics">
-                    <label for="acrobatics" class="form-check-label ms-2">2</label>
+                    <label for="acrobatics" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("dexterity")?.value, this.skillsProf.get("acrobatics")?.value)}}</label>
                     <label for="acrobatics" class="form-check-label ms-2">Акробатика</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="sleightOfHands" formControlName="sleightOfHands">
-                    <label for="sleightOfHands" class="form-check-label ms-2">2</label>
+                    <label for="sleightOfHands" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("dexterity")?.value, this.skillsProf.get("sleightOfHands")?.value)}}</label>
                     <label for="sleightOfHands" class="form-check-label ms-2">Ловкость рук</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="stealth" formControlName="stealth">
-                    <label for="stealth" class="form-check-label ms-2">2</label>
+                    <label for="stealth" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("dexterity")?.value, this.skillsProf.get("stealth")?.value)}}</label>
                     <label for="stealth" class="form-check-label ms-2">Скрытность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="arcana" formControlName="arcana">
-                    <label for="arcana" class="form-check-label ms-2">2</label>
+                    <label for="arcana" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("intelligence")?.value, this.skillsProf.get("arcana")?.value)}}</label>
                     <label for="arcana" class="form-check-label ms-2">Магия</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="history" formControlName="history">
-                    <label for="history" class="form-check-label ms-2">2</label>
+                    <label for="history" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("intelligence")?.value, this.skillsProf.get("history")?.value)}}</label>
                     <label for="history" class="form-check-label ms-2">История</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="investigation" formControlName="investigation">
-                    <label for="investigation" class="form-check-label ms-2">2</label>
+                    <label for="investigation" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("intelligence")?.value, this.skillsProf.get("investigation")?.value)}}</label>
                     <label for="investigation" class="form-check-label ms-2">Анализ</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="nature" formControlName="nature">
-                    <label for="nature" class="form-check-label ms-2">2</label>
+                    <label for="nature" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("intelligence")?.value, this.skillsProf.get("nature")?.value)}}</label>
                     <label for="nature" class="form-check-label ms-2">Природа</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="religion" formControlName="religion">
-                    <label for="religion" class="form-check-label ms-2">2</label>
+                    <label for="religion" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("intelligence")?.value, this.skillsProf.get("religion")?.value)}}</label>
                     <label for="religion" class="form-check-label ms-2">Религия</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="animalHandling" formControlName="animalHandling">
-                    <label for="animalHandling" class="form-check-label ms-2">2</label>
+                    <label for="animalHandling" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("wisdom")?.value, this.skillsProf.get("animalHandling")?.value)}}</label>
                     <label for="animalHandling" class="form-check-label ms-2">Уход за животными</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="insight" formControlName="insight">
-                    <label for="insight" class="form-check-label ms-2">2</label>
+                    <label for="insight" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("wisdom")?.value, this.skillsProf.get("insight")?.value)}}</label>
                     <label for="insight" class="form-check-label ms-2">Проницательность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="medicine" formControlName="medicine">
-                    <label for="medicine" class="form-check-label ms-2">2</label>
+                    <label for="medicine" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("wisdom")?.value, this.skillsProf.get("medicine")?.value)}}</label>
                     <label for="medicine" class="form-check-label ms-2">Медицина</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="perception" formControlName="perception">
-                    <label for="perception" class="form-check-label ms-2">2</label>
+                    <label for="perception" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("wisdom")?.value, this.skillsProf.get("perception")?.value)}}</label>
                     <label for="perception" class="form-check-label ms-2">Внимательность</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="survival" formControlName="survival">
-                    <label for="survival" class="form-check-label ms-2">2</label>
+                    <label for="survival" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("wisdom")?.value, this.skillsProf.get("survival")?.value)}}</label>
                     <label for="survival" class="form-check-label ms-2">Выживание</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="deception" formControlName="deception">
-                    <label for="deception" class="form-check-label ms-2">2</label>
+                    <label for="deception" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("charisma")?.value, this.skillsProf.get("deception")?.value)}}</label>
                     <label for="deception" class="form-check-label ms-2">Обман</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="intimidation" formControlName="intimidation">
-                    <label for="intimidation" class="form-check-label ms-2">2</label>
+                    <label for="intimidation" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("charisma")?.value, this.skillsProf.get("intimidation")?.value)}}</label>
                     <label for="intimidation" class="form-check-label ms-2">Запугивание</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="performance" formControlName="performance">
-                    <label for="performance" class="form-check-label ms-2">2</label>
+                    <label for="performance" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("charisma")?.value, this.skillsProf.get("performance")?.value)}}</label>
                     <label for="performance" class="form-check-label ms-2">Выступление</label>
                 </div>
                 <div class="form-group">
                     <input class="form-check-input" type="checkbox" id="persuasion" formControlName="persuasion">
-                    <label for="persuasion" class="form-check-label ms-2">2</label>
+                    <label for="persuasion" class="form-check-label ms-2">{{calculateAbilityModifier(this.stats.get("charisma")?.value, this.skillsProf.get("persuasion")?.value)}}</label>
                     <label for="persuasion" class="form-check-label ms-2">Убеждение</label>
                 </div>
             </form>
 
         </div>
-        <div class="passivePerception" style="background: #ffffff; width: fit-content; margin-top: 10px; padding: 10px;">
-            <span>12 Пассивная мудрость</span>
-        </div>
     </div>
     <div class="col">
         <div class="outlineBasicInformation">
-            <form role="form">
+            <form role="form" [formGroup]="mainInformation">
                 <div class="form-group">
-                    <label for="charName" class="col-form-label">Имя персонажа</label>
-                    <input type="text" class="form-control" id="charName">
+                    <label for="name" class="col-form-label">Имя персонажа</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" >
                 </div>
                 <div class="form-group">
                     <label for="charClass" class="col-form-label">Класс</label>
-                    <input type="text" class="form-control" id="charClass">
+                    <input type="text" class="form-control" id="charClass" formControlName="charClass" >
                 </div>
                 <div class="form-group">
                     <label for="charLevel" class="col-form-label">Уровень</label>
-                    <input type="text" class="form-control" id="charLevel">
+                    <input type="text" class="form-control" id="charLevel" formControlName="charLevel" >
                 </div>
                 <div class="form-group">
                     <label for="charRace" class="col-form-label">Раса</label>
-                    <input type="text" class="form-control" id="charRace">
+                    <input type="text" class="form-control" id="charRace" formControlName="race" >
                 </div>
                 <div class="form-group">
-                    <label for="charAlignment" class="col-form-label">Мировоззрение</label>
-                    <input type="text" class="form-control" id="charAlignment">
+                    <label for="alignment" class="col-sm-2 col-form-label">Мировоззрение</label>
+                    <select class="form-select" id="alignment" formControlName="alignment">
+                        <option value="LAWFUL_GOOD" selected>Законно-добрый</option>
+                        <option value="LAWFUL_NEUTRAL">Законно-нейтральный</option>
+                        <option value="LAWFUL_EVIL">Законно-злой</option>
+                        <option value="NEUTRAL_GOOD">Нейтрально-добрый</option>
+                        <option value="TRUE_NEUTRAL">Нейтральный</option>
+                        <option value="NEUTRAL_EVIL">Нейтрально-злой</option>
+                        <option value="CHAOTIC_GOOD">Хаотично-добрый</option>
+                        <option value="CHAOTIC_NEUTRAL">Хаотично-нейтральный</option>
+                        <option value="CHAOTIC_EVIL">Хаотично-злой</option>
+                    </select>
                 </div>
             </form>
         </div>
         <div class="outlineBasicInformation">
-            <form role="form">
+            <form role="form" [formGroup]="mainInformation">
                 <div class="form-group">
                     <label for="armorClass" class="col-form-label">КД</label>
-                    <input type="text" class="form-control" id="armorClass" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input type="text" class="form-control" id="armorClass" formControlName="armorClass" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
                 <div class="form-group">
                     <label for="speed" class="col-form-label">Скорость</label>
-                    <input type="text" class="form-control" id="speed" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input type="text" class="form-control" id="speed" formControlName="speed" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                </div>
+                <div class="form-group">
+                    <label for="proficiencyBonus" class="col-form-label">Бонус мастерства</label>
+                    <input type="text" class="form-control" id="proficiencyBonus" formControlName="proficiencyBonus" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
                 <div class="form-group">
                     <label for="maxHitPoints" class="col-form-label">Максимальные хиты</label>
-                    <input type="text" class="form-control" id="maxHitPoints" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input type="text" class="form-control" id="maxHitPoints" formControlName="maxHitPoints" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
                 <div class="form-group">
                     <label for="curHitPoints" class="col-form-label">Текущие хиты</label>
-                    <input type="text" class="form-control" id="curHitPoints" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input type="text" class="form-control" id="curHitPoints" formControlName="curHitPoints" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                 </div>
             </form>
         </div>
-        <button class="btn btn-primary">Сохранить персонажа</button>
+        <button class="btn btn-primary" (click)="onSubmit()">Сохранить</button>
     </div>
 
 </div>
