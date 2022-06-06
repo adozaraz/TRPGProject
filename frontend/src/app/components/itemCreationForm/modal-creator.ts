@@ -129,24 +129,24 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
         switch (this.itemType) {
             case QueryItem.Spells:
                 this.itemCreator = this.formBuilder.group({
-                    name: new FormControl("", [Validators.requiredTrue]),
+                    name: new FormControl(""),
                     description: new FormControl(),
-                    spellLevel: new FormControl(),
+                    spellLevel: new FormControl(0),
                     school: new FormControl(),
                     actionTime: new FormControl(),
                     distance: new FormControl(),
-                    verbalComp: new FormControl(),
-                    somaticComp: new FormControl(),
-                    materialComp: new FormControl(),
+                    verbalComp: new FormControl(false),
+                    somaticComp: new FormControl(false),
+                    materialComp: new FormControl(false),
                     material: new FormControl("")
                 });
                 break;
             case QueryItem.MagicItems:
                 this.itemCreator = this.formBuilder.group({
                     name: new FormControl("", [Validators.requiredTrue]),
-                    attunementRequired: new FormControl(),
+                    attunementRequired: new FormControl(false),
                     rarity: new FormControl(0),
-                    description: new FormControl(),
+                    description: new FormControl()
                 });
                 break;
             case QueryItem.Bestiary:
@@ -171,32 +171,32 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
                     charisma: new FormControl(1)
                 });
                 this.skillsProf = this.formBuilder.group({
-                    athletics: false,
-                    acrobatics: false,
-                    sleightOfHands: false,
-                    stealth: false,
-                    arcana: false,
-                    history: false,
-                    investigation: false,
-                    nature: false,
-                    religion: false,
-                    animalHandling: false,
-                    insight: false,
-                    medicine: false,
-                    perception: false,
-                    survival: false,
-                    deception: false,
-                    intimidation: false,
-                    performance: false,
-                    persuasion: false
+                    athletics: new FormControl(false),
+                    acrobatics: new FormControl(false),
+                    sleightOfHands: new FormControl(false),
+                    stealth: new FormControl(false),
+                    arcana: new FormControl(false),
+                    history: new FormControl(false),
+                    investigation: new FormControl(false),
+                    nature: new FormControl(false),
+                    religion: new FormControl(false),
+                    animalHandling: new FormControl(false),
+                    insight: new FormControl(false),
+                    medicine: new FormControl(false),
+                    perception: new FormControl(false),
+                    survival: new FormControl(false),
+                    deception: new FormControl(false),
+                    intimidation: new FormControl(false),
+                    performance: new FormControl(false),
+                    persuasion: new FormControl(false)
                 });
                 this.savingThrowsProf = this.formBuilder.group({
-                    strength: false,
-                    dexterity: false,
-                    constitution: false,
-                    intelligence: false,
-                    wisdom: false,
-                    charisma: false
+                    strength: new FormControl(false),
+                    dexterity: new FormControl(false),
+                    constitution: new FormControl(false),
+                    intelligence: new FormControl(false),
+                    wisdom: new FormControl(false),
+                    charisma: new FormControl(false)
                 });
                 break;
             default:
@@ -251,5 +251,67 @@ export class ModalCreatorComponent implements OnInit, OnChanges {
         this.skillsProf.reset();
         this.savingThrowsProf.reset();
         this.stats.reset();
+        switch (this.itemType) {
+            case QueryItem.Spells:
+                this.itemCreator.patchValue({
+                    name: "",
+                    spellLevel: 0,
+                    verbalComp: false,
+                    somaticComp: false,
+                    materialComp: false,
+                    material: ""
+                });
+                break;
+            case QueryItem.MagicItems:
+                this.itemCreator.patchValue({
+                    name: "",
+                    attunementRequired: false,
+                    rarity: 0,
+                });
+                break;
+            case QueryItem.Bestiary:
+                this.itemCreator.patchValue({
+                    name: "",
+                    size: 0,
+                    alignment: 0, //Integer type
+                });
+                this.skillsProf.patchValue({
+                    athletics: false,
+                    acrobatics: false,
+                    sleightOfHands: false,
+                    stealth: false,
+                    arcana: false,
+                    history: false,
+                    investigation: false,
+                    nature: false,
+                    religion: false,
+                    animalHandling: false,
+                    insight: false,
+                    medicine: false,
+                    perception: false,
+                    survival: false,
+                    deception: false,
+                    intimidation: false,
+                    performance: false,
+                    persuasion: false
+                });
+                this.savingThrowsProf.patchValue({
+                    strength: false,
+                    dexterity: false,
+                    constitution: false,
+                    intelligence: false,
+                    wisdom: false,
+                    charisma: false
+                });
+                this.stats.patchValue({
+                    strength: 1,
+                    dexterity: 1,
+                    constitution: 1,
+                    intelligence: 1,
+                    wisdom: 1,
+                    charisma: 1
+                })
+                break;
+        }
     }
 }

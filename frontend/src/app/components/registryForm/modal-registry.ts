@@ -29,12 +29,11 @@ export class ModalRegistryComponent {
     onSubmit(): void {
         this.userService.signUp(new SignUpInfo(this.registryForm.get("login")?.value, this.registryForm.get("email")?.value, this.registryForm.get("password")?.value)).subscribe(() => {
             console.log("Registered successfully");
+            alert("Вы успешно зарегестрировались");
             this.userAlreadyTaken = false;
-        },
-            (error) => {
-            console.log(error);
-            if (error.status == 409) this.userAlreadyTaken = true;
-            });
+        }, (error) => {
+            alert("Произошла ошибка. Попробуйте ещё раз.");
+        });
         this.registryForm.reset();
     }
 }

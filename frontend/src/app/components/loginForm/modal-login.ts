@@ -31,6 +31,8 @@ export class ModalLoginComponent {
             this.tokenStorage.saveAuthorities(data.authorities);
             this.tokenStorage.saveExpirationDate(data.expirationDate)
             this.userService.loadCurrentUserData(loginInfo.username);
+        }, error => {
+            alert("Произошла ошибка. Попробуйте ещё раз");
         });
         this.loginForm.reset();
     }
